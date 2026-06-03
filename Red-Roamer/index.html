@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Red Roamer Ltd — Travel Experiences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8f7f4;
+      --surface: #ffffff;
+      --ink: #1a1917;
+      --ink-muted: #6b6860;
+      --ink-faint: #b0ada8;
+      --accent: #c0392b;
+      --accent-dark: #962d22;
+      --accent-pale: #fdf2f1;
+      --border: rgba(26,25,23,0.08);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 20px 40px -15px rgba(0,0,0,0.08);
+      --shadow-lg: 0 32px 64px -20px rgba(0,0,0,0.12);
+      --radius: 1.75rem;
+      --font: 'Outfit', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(248,247,244,0.82);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 34px; height: 34px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark svg {
+      width: 18px; height: 18px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-wordmark {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .nav-wordmark span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.875rem !important;
+      font-weight: 500 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent) !important;
+      transform: translateY(-1px);
+      color: #fff !important;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding-top: 72px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 3rem 5rem 4rem;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-pale);
+      color: var(--accent);
+      border: 1px solid rgba(192,57,43,0.15);
+      border-radius: 100px;
+      padding: 0.35rem 0.875rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      width: fit-content;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.0;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      max-width: 52ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.875rem 1.75rem;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(192,57,43,0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(192,57,43,0.32);
+    }
+
+    .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+    .btn-primary svg {
+      width: 16px; height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      padding: 0.875rem 1.75rem;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .btn-ghost:hover {
+      background: var(--surface);
+      border-color: rgba(26,25,23,0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost:active { transform: translateY(0) scale(0.98); }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .hero-visual-img {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to bottom, rgba(26,25,23,0.18) 0%, rgba(26,25,23,0.52) 100%),
+        url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=85&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      animation: hero-zoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes hero-zoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.0); }
+    }
+
+    .hero-visual-overlay {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2.5rem;
+      right: 2.5rem;
+    }
+
+    .hero-stat-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-top: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.3rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat + .hero-stat {
+      border-left: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* ── MARQUEE ─────────────────────────────────────────────── */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 0;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3.5rem;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .marquee-dot {
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* ── SECTION SHARED ──────────────────────────────────────── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    /* ── SERVICES ─────────────────────────────────────────────── */
+    .services {
+      background: var(--surface);
+    }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .services-intro {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      max-width: 52ch;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .service-card {
+      background: var(--surface);
+      padding: 2.5rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      background: var(--bg);
+    }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      background: var(--accent-pale);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* ── WHY US ─────────────────────────────────────────────── */
+    .why {
+      background: var(--bg);
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      display: block;
+      background-image: url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=900&q=85&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .why-float-card {
+      position: absolute;
+      top: -1.5rem;
+      right: -2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+      min-width: 210px;
+    }
+
+    .why-float-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      margin-bottom: 0.35rem;
+    }
+
+    .why-float-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .why-float-sub {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      margin-top: 0.25rem;
+    }
+
+    .why-content { }
+
+    .why-content .section-h2 {
+      margin-bottom: 1.25rem;
+    }
+
+    .why-content p {
+      font-size: 0.97rem;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 54ch;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.55;
+    }
+
+    .why-check {
+      width: 22px; height: 22px;
+      background: var(--accent-pale);
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .why-check svg {
+      width: 12px; height: 12px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── DESTINATIONS ─────────────────────────────────────────── */
+    .destinations {
+      background: var(--surface);
+    }
+
+    .dest-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      gap: 2rem;
+    }
+
+    .dest-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .dest-card {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .dest-card-inner {
+      aspect-ratio: 3/4;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .dest-card:first-child .dest-card-inner {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 480px;
+    }
+
+    .dest-card:hover .dest-card-inner {
+      transform: scale(1.04);
+    }
+
+    .dest-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+    }
+
+    .dest-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+
+    .dest-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* ── COMPANY REGISTRATION ─────────────────────────────────── */
+    .company-info {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .company-info .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .company-info .section-label {
+      color: rgba(192,57,43,0.9);
+    }
+
+    .company-info .section-h2 {
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .company-info p {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      max-width: 52ch;
+      margin-bottom: 2rem;
+    }
+
+    .reg-table {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .reg-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .reg-row:last-child { border-bottom: none; }
+
+    .reg-key {
+      padding: 1rem 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .reg-val {
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.78);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────────── */
+    .contact {
+      background: var(--bg);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-content .section-h2 {
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-content p {
+      font-size: 0.97rem;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      max-width: 50ch;
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-detail:last-of-type {
+      border-bottom: none;
+    }
+
+    .contact-detail-icon {
+      width: 38px; height: 38px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-icon svg {
+      width: 16px; height: 16px;
+      stroke: var(--ink-muted);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-detail-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-faint);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-detail-value {
+      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.75rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .field label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 0.875rem;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--ink-faint);
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: rgba(192,57,43,0.5);
+      box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 4rem 2rem 2.5rem;
+    }
+
+    .footer-top {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 36ch;
+      margin-top: 1rem;
+    }
+
+    .footer-brand .nav-logo-mark {
+      background: var(--accent);
+    }
+
+    .footer-brand .nav-wordmark {
+      color: #fff;
+    }
+
+    .footer-brand .nav-wordmark span {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-col a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: #fff; }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-reg {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SCROLL REVEAL ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 360px; display: block; }
+      .hero-visual-img { position: absolute; }
+      .hero-content { padding: 4rem 1.5rem 3rem; max-width: 100%; }
+      .services-header { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-inner { grid-template-columns: 1fr; }
+      .why-float-card { display: none; }
+      .dest-grid { grid-template-columns: 1fr; }
+      .dest-card:first-child .dest-card-inner { min-height: 300px; }
+      .company-info .container { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+      nav { padding: 1rem 1.25rem; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-stat-card { grid-template-columns: 1fr; gap: 1rem; }
+      .hero-stat + .hero-stat { border-left: none; border-top: 1px solid rgba(255,255,255,0.15); }
+      .field-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="nav-wordmark">
+        The Red Roamer
+        <span>Ltd — Est. 2024</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding: 0;">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now booking 2025 departures
+      </div>
+      <h1 class="hero-h1">
+        Travel with<br><em>purpose.</em><br>Roam freely.
+      </h1>
+      <p class="hero-sub">
+        Curated travel experiences designed around the way you want to move through the world. From urban escapes to remote wilderness — we handle the details.
+      </p>
+      <div class="hero-actions">
+        <a href="#destinations" class="btn-primary">
+          Explore Destinations
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-img"></div>
+      <div class="hero-visual-overlay">
+        <div class="hero-stat-card">
+          <div class="hero-stat">
+            <div class="hero-stat-num">150+</div>
+            <div class="hero-stat-label">Destinations</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4.9</div>
+            <div class="hero-stat-label">Avg Rating</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5K+</div>
+            <div class="hero-stat-label">Travellers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Adventure Travel</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Cultural Experiences</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Luxury Escapes</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Eco Tourism</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Group Expeditions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Bespoke Itineraries</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Solo Travel</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Honeymoon Packages</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item"><span class="marquee-dot"></span>Adventure Travel</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Cultural Experiences</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Luxury Escapes</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Eco Tourism</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Group Expeditions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Bespoke Itineraries</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Solo Travel</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Honeymoon Packages</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div>
+          <p class="section-label">What We Do</p>
+          <h2 class="section-h2">Travel, handled<br>end to end.</h2>
+        </div>
+        <p class="services-intro">
+          We take care of every part of your journey — from route planning and accommodation to local guides and 24/7 support on the ground. You show up. We handle the rest.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="service-title">Accommodation</h3>
+          <p class="service-desc">Handpicked stays from boutique guesthouses to premium resorts. Every property is vetted for quality, location, and experience.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3 class="service-title">Route Planning</h3>
+          <p class="service-desc">Custom itineraries built around your pace, interests, and budget. We map every detail before you leave home.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="service-title">Group Travel</h3>
+          <p class="service-desc">Coordinated group departures for families, friends, and corporate teams. Logistics managed from start to finish.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3 class="service-title">Transfers</h3>
+          <p class="service-desc">Airport pickups, intercity transport, and private transfers. No arrival anxiety, just a smooth handoff from touchdown.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="service-title">Visa Assistance</h3>
+          <p class="service-desc">Documentation guidance, application support, and requirements checklists for every destination we serve.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.1 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3 class="service-title">24/7 Support</h3>
+          <p class="service-desc">Our team is always reachable. Whatever happens on the road, you have a direct line to someone who can fix it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="about">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-visual reveal">
+          <div class="why-img"></div>
+          <div class="why-float-card">
+            <div class="why-float-label">Registered</div>
+            <div class="why-float-value">2024</div>
+            <div class="why-float-sub">Companies House, England</div>
+          </div>
+        </div>
+        <div class="why-content reveal reveal-delay-2">
+          <p class="section-label">Why Red Roamer</p>
+          <h2 class="section-h2">Built for real<br>travellers.</h2>
+          <p>
+            We started The Red Roamer because we believed travel companies were solving the wrong problems. We don't sell packages — we build journeys around the people taking them.
+          </p>
+          <ul class="why-list">
+            <li>
+              <span class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Every itinerary is built by a human who has been there, not generated from a template.
+            </li>
+            <li>
+              <span class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Transparent pricing — no hidden fees, no add-on surprises after you book.
+            </li>
+            <li>
+              <span class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Locally sourced guides and accommodations that put money back into communities.
+            </li>
+            <li>
+              <span class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Incorporated and regulated in England &amp; Wales — fully accountable to you.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section class="destinations" id="destinations">
+    <div class="container">
+      <div class="dest-header reveal">
+        <div>
+          <p class="section-label">Where We Go</p>
+          <h2 class="section-h2">Featured destinations.</h2>
+        </div>
+        <a href="#contact" class="btn-ghost" style="flex-shrink:0;">View All</a>
+      </div>
+      <div class="dest-grid reveal">
+        <div class="dest-card">
+          <div class="dest-card-inner" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&q=80&auto=format&fit=crop');"></div>
+          <div class="dest-card-overlay">
+            <div class="dest-tag">Southeast Asia</div>
+            <div class="dest-name">Luang Prabang,<br>Laos</div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-card-inner" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80&auto=format&fit=crop');"></div>
+          <div class="dest-card-overlay">
+            <div class="dest-tag">North Africa</div>
+            <div class="dest-name">Marrakech,<br>Morocco</div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-card-inner" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80&auto=format&fit=crop');"></div>
+          <div class="dest-card-overlay">
+            <div class="dest-tag">South America</div>
+            <div class="dest-name">Cartagena,<br>Colombia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY REGISTRATION INFO -->
+  <section class="company-info">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Registered Business</p>
+        <h2 class="section-h2">Incorporated &amp;<br>fully compliant.</h2>
+        <p>
+          The Red Roamer Ltd is a private limited company registered in England and Wales. We operate under the Companies Act 2006 with full transparency on ownership and governance.
+        </p>
+      </div>
+      <div class="reg-table reveal reveal-delay-2">
+        <div class="reg-row">
+          <div class="reg-key">Company</div>
+          <div class="reg-val">THE RED ROAMER LTD</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">Reg. Number</div>
+          <div class="reg-val">15609995</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">Incorporated</div>
+          <div class="reg-val">2nd April 2024</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">Type</div>
+          <div class="reg-val">Private Company Limited by Shares</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">Jurisdiction</div>
+          <div class="reg-val">England and Wales</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">SIC Code</div>
+          <div class="reg-val">79901 — Tour Operator Activities</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">Registered Office</div>
+          <div class="reg-val">923 Finchley Road, London, NW11 7PE</div>
+        </div>
+        <div class="reg-row">
+          <div class="reg-key">Director</div>
+          <div class="reg-val">Ms Emma Gilfillan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-content reveal">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-h2">Start planning<br>your journey.</h2>
+          <p>
+            Whether you have a destination in mind or just a vague idea of the kind of trip you want, reach out. We'll take it from there.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Address</div>
+              <div class="contact-detail-value">923 Finchley Road, London, NW11 7PE</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value">hello@theredroamer.co.uk</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.1 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value">+44 (0) 20 0000 0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-2">
+          <div class="form-title">Send us a message</div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" placeholder="Alex" />
+            </div>
+            <div class="field">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" placeholder="Morgan" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="interest">Interested in</label>
+            <select id="interest">
+              <option value="" disabled selected>Select a service type</option>
+              <option>Adventure Travel</option>
+              <option>Cultural Tour</option>
+              <option>Luxury Escape</option>
+              <option>Group Expedition</option>
+              <option>Honeymoon</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Your message</label>
+            <textarea id="message" rows="4" placeholder="Tell us about the kind of trip you have in mind..."></textarea>
+          </div>
+          <button class="btn-primary form-submit" onclick="handleSubmit(event)">
+            Send Message
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="text-decoration:none;">
+          <div class="nav-logo-mark">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="nav-wordmark">
+            The Red Roamer
+            <span>Ltd — Est. 2024</span>
+          </div>
+        </a>
+        <p>Curated travel experiences for curious people. Incorporated in England and Wales, serving the world.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Accommodation</a></li>
+          <li><a href="#services">Route Planning</a></li>
+          <li><a href="#services">Group Travel</a></li>
+          <li><a href="#services">Transfers</a></li>
+          <li><a href="#services">Visa Assistance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="#destinations">Southeast Asia</a></li>
+          <li><a href="#destinations">North Africa</a></li>
+          <li><a href="#destinations">South America</a></li>
+          <li><a href="#destinations">Europe</a></li>
+          <li><a href="#destinations">West Africa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="https://find-and-update.company-information.service.gov.uk/company/15609995" target="_blank" rel="noopener">Companies House</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        &copy; 2024 The Red Roamer Ltd. All rights reserved. Registered in England and Wales.
+      </div>
+      <div class="footer-reg">Company No. 15609995</div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.currentTarget;
+      const original = btn.innerHTML;
+      btn.innerHTML = 'Sending...';
+      btn.style.opacity = '0.7';
+      btn.style.pointerEvents = 'none';
+      setTimeout(() => {
+        btn.innerHTML = 'Message Sent!';
+        btn.style.background = '#27ae60';
+        btn.style.opacity = '1';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.style.background = '';
+          btn.style.pointerEvents = '';
+        }, 3000);
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
