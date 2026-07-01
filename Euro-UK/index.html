@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EURO UK SHOPPING LTD — Premium Global Retail & Logistics</title>
+    <title>EURO | Curated Global Essentials</title>
     <style>
         :root {
-            --bg: #0b0b0c;
-            --surface: #131316;
-            --surface-hover: #1c1c21;
-            --border: #282830;
-            --text-main: #f4f4f7;
-            --text-muted: #a0a0ab;
-            --accent: #ffffff;
-            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+            --bg: #ffffff;
+            --text-main: #111111;
+            --text-muted: #767676;
+            --border-light: #eaeaea;
+            --accent-bg: #f7f7f7;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
 
         * {
@@ -27,251 +25,505 @@
             background-color: var(--bg);
             color: var(--text-main);
             font-family: var(--font-sans);
-            line-height: 1.6;
-            padding: 0;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
         }
 
-        /* Minimal Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.03em;
+        /* Banner Notice */
+        .top-banner {
+            background: var(--text-main);
+            color: var(--bg);
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
+            font-weight: 500;
         }
 
-        .nav-links {
+        /* Complex Premium Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .mega-menu {
             display: flex;
+            justify-content: center;
             gap: 2.5rem;
             list-style: none;
         }
 
-        .nav-links a {
-            color: var(--text-muted);
+        .mega-menu > li > a {
+            font-size: 0.85rem;
+            font-weight: 500;
             text-decoration: none;
-            font-size: 0.9rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.5rem 0;
             transition: color 0.2s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
+        .mega-menu > li > a:hover {
+            color: var(--text-muted);
         }
 
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
+        .nav-utilities {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .nav-utilities a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+
+        .search-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* Hero Canvas */
+        .hero-canvas {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 8rem 4rem 6rem 4rem;
+            padding: 8rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-statement {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.75rem;
         }
 
-        .hero-tag {
+        .hero-statement .tagline {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 500;
-            line-height: 1.1;
-            letter-spacing: -0.04em;
-            max-width: 800px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
-            max-width: 600px;
+        }
+
+        .hero-statement h1 {
+            font-size: 3.75rem;
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-statement p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            line-height: 1.6;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
             margin-top: 0.5rem;
         }
 
-        /* Grid Services Section */
-        .services-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 4rem 8rem 4rem;
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg);
         }
 
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2.5rem;
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-bg);
+        }
+
+        /* Pure CSS Editorial Placeholder Image Block */
+        .hero-visual {
+            background: var(--accent-bg);
+            aspect-ratio: 4/5;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            align-items: center;
+            justify-content: center;
         }
 
-        .card:hover {
-            border-color: #44444f;
-        }
-
-        .card-num {
+        .hero-visual::before {
+            content: "EURO SELECTIONS";
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.75rem;
+            color: #d1d1d1;
+            letter-spacing: 0.2em;
         }
 
-        .card h3 {
-            font-size: 1.3rem;
+        /* Modular Curated Grid Section */
+        .curated-feed {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem 8rem 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
             font-weight: 500;
             letter-spacing: -0.02em;
         }
 
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Corporate Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 4rem;
-            background: #000;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 3rem;
-        }
-
-        .footer-brand h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-brand p {
+        .section-header a {
             font-size: 0.85rem;
-            color: var(--text-muted);
-            max-width: 280px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            font-weight: 500;
         }
 
-        .footer-details {
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .item-card {
+            text-decoration: none;
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            font-size: 0.85rem;
+            gap: 1rem;
+        }
+
+        .item-thumb {
+            background: var(--accent-bg);
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d1d1d1;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .item-card:hover .item-thumb {
+            opacity: 0.85;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .item-name {
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .item-category {
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
-        .footer-details strong {
+        .item-price {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        /* Global Footer Matrix */
+        footer {
+            border-top: 1px solid var(--border-light);
+            background: var(--accent-bg);
+            padding: 6rem 3rem 3rem 3rem;
+        }
+
+        .footer-matrix {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-brand-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-brand-column p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
             color: var(--text-main);
         }
 
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 4rem auto 0 auto;
+        .footer-base {
+            max-width: 1400px;
+            margin: 6rem auto 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: #52525b;
+            color: var(--text-muted);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav { padding: 2rem; }
-            .nav-links { display: none; }
-            .hero { padding: 4rem 2rem; }
-            h1 { font-size: 2.5rem; }
-            .services-section { padding: 2rem; }
-            footer { padding: 2rem; }
-            .footer-content { flex-direction: column; gap: 2rem; }
+        .footer-legal-tags {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Responsive Adaptations */
+        @media (max-width: 1024px) {
+            .nav-container { padding: 1.5rem; }
+            .mega-menu { display: none; }
+            .hero-canvas { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+            .editorial-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .curated-feed { padding: 2rem 1.5rem; }
+            .footer-matrix { grid-template-columns: 1fr 1fr; gap: 3rem; }
+            footer { padding: 4rem 1.5rem 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Minimal Navigation -->
-    <nav>
-        <div class="logo">Euro UK Shopping</div>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">Corporate</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="top-banner">Complimentary Premium Shipping Across Europe & the UK on All Orders over £150</div>
 
-    <!-- Hero Identity -->
-    <header class="hero">
-        <div class="hero-tag">Global Retail & Distribution Framework</div>
-        <h1>Bridging international supply chains with sophisticated consumer markets.</h1>
-        <p>EURO UK SHOPPING LIMITED architecture facilitates frictionless mail order, cross-border digital commerce, and highly structured consumer trade networks.</p>
+    <!-- Real Premium Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">Euro UK Shopping</a>
+            
+            <ul class="mega-menu">
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Apparel</a></li>
+                <li><a href="#">Living & Tech</a></li>
+                <li><a href="#">Design Objects</a></li>
+                <li><a href="#">Editorial</a></li>
+                <li><a href="#">Archives</a></li>
+            </ul>
+
+            <div class="nav-utilities">
+                <div class="search-trigger">
+                    <span>Search</span>
+                </div>
+                <a href="#">Account</a>
+                <a href="#">Cart (0)</a>
+            </div>
+        </div>
     </header>
 
-    <!-- Business Operations Division -->
-    <section id="services" class="services-section">
-        <div class="grid">
+    <!-- Clean, High-End Hero Section -->
+    <main>
+        <section class="hero-canvas">
+            <div class="hero-statement">
+                <span class="tagline">Summer Collection 2026</span>
+                <h1>Functional design for standard living.</h1>
+                <p>We source, curate, and supply an uncompromised catalog of objects, tools, and apparel designed to last. Built with precision and distributed intentionally from London.</p>
+                <div class="cta-group">
+                    <a href="#" class="btn btn-primary">Shop Editions</a>
+                    <a href="#" class="btn btn-secondary">Explore Lookbook</a>
+                </div>
+            </div>
+            <div class="hero-visual"></div>
+        </section>
+
+        <!-- Product Presentation Workspace -->
+        <section class="curated-feed">
+            <div class="section-header">
+                <h2>The Latest Selection</h2>
+                <a href="#">View All Items</a>
+            </div>
+
+            <div class="editorial-grid">
+                <!-- Product item 1 -->
+                <a href="#" class="item-card">
+                    <div class="item-thumb">01 / APPAREL</div>
+                    <div class="item-details">
+                        <span class="item-name">Structured Cotton Overshirt</span>
+                        <span class="item-category">Menswear / Charcoal</span>
+                        <span class="item-price">£120.00</span>
+                    </div>
+                </a>
+
+                <!-- Product item 2 -->
+                <a href="#" class="item-card">
+                    <div class="item-thumb">02 / HOME</div>
+                    <div class="item-details">
+                        <span class="item-name">Anodized Aluminium Desk Tray</span>
+                        <span class="item-category">Workspace / Silver</span>
+                        <span class="item-price">£65.00</span>
+                    </div>
+                </a>
+
+                <!-- Product item 3 -->
+                <a href="#" class="item-card">
+                    <div class="item-thumb">03 / TRAVEL</div>
+                    <div class="item-details">
+                        <span class="item-name">Waterproof Tech Shell Pack</span>
+                        <span class="item-category">Luggage / Matte Black</span>
+                        <span class="item-price">£185.00</span>
+                    </div>
+                </a>
+
+                <!-- Product item 4 -->
+                <a href="#" class="item-card">
+                    <div class="item-thumb">04 / LIGHTING</div>
+                    <div class="item-details">
+                        <span class="item-name">Rechargeable Cordless Task Lamp</span>
+                        <span class="item-category">Objects / Sand</span>
+                        <span class="item-price">£140.00</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fully Realized Consumer Footprint Matrix -->
+    <footer>
+        <div class="footer-matrix">
+            <div class="footer-brand-column">
+                <div class="brand-logo">Euro UK Shopping</div>
+                <p>Providing curated consumer goods via advanced global mail order systems and digital distribution frameworks.</p>
+            </div>
             
-            <div class="card">
-                <div class="card-num">01 / DISTRIBUTION</div>
-                <h3>E-Commerce & Digital Retail</h3>
-                <p>Operating precise digital retail pipelines optimized for modern consumer demands under dynamic mail-order architectures.</p>
+            <div class="footer-column">
+                <h4>Collections</h4>
+                <ul class="footer-links">
+                    <li><a href="#">All Goods</a></li>
+                    <li><a href="#">Seasonal Carry</a></li>
+                    <li><a href="#">Hardware & Tools</a></li>
+                    <li><a href="#">Garments</a></li>
+                </ul>
             </div>
 
-            <div class="card">
-                <div class="card-num">02 / LOGISTICS</div>
-                <h3>Cross-Border Fulfillment</h3>
-                <p>Leveraging central United Kingdom positioning to deploy rapid, accurate infrastructure networks across global shipping corridors.</p>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Fulfillment Details</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                </ul>
             </div>
 
-            <div class="card">
-                <div class="card-num">03 / MANAGEMENT</div>
-                <h3>Strategic Oversight</h3>
-                <p>Guided by executive commercial stewardship ensuring scalable asset allocation, enterprise compliance, and market growth.</p>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Our Manifesto</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Retail Locations</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
             </div>
 
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Journal</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Mailing List</a></li>
+                </ul>
+            </div>
         </div>
-    </section>
 
-    <!-- Corporate Footer incorporating exact file references -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h4>EURO UK SHOPPING LTD</h4>
-                <p>Registered and incorporated under the United Kingdom Companies Act 2006. All rights and corporate infrastructure fully reserved.</p>
+        <div class="footer-base">
+            <span>&copy; 2026 EURO UK SHOPPING LIMITED. All rights reserved.</span>
+            <div class="footer-legal-tags">
+                <span>Verified Framework: EURO UK SHOPPING LIMITED.pdf</span>
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms of Trading</a>
             </div>
-            
-            <div class="footer-details">
-                <p><strong>Headquarters:</strong><br>Unit 2, 1 Empire Mews<br>London, England, SW16 2BF</p>
-            </div>
-
-            <div class="footer-details">
-                <p><strong>Corporate Governance:</strong><br>S. H. Ali, Commercial Director</p>
-                <p><strong>Classification Code:</strong><br>SIC 47910 — Mail Order & Digital Commerce</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <span>&copy; 2026 EURO UK SHOPPING LIMITED.</span>
-            <span>Corporate Ledger Ref: EURO UK SHOPPING LIMITED.pdf</span>
         </div>
     </footer>
 
