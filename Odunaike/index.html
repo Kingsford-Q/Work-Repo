@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odunaike Holdings LLC — Strategic Investments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-2: #1a1a1a;
+      --border: rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text-primary: #f5f0e8;
+      --text-secondary: #8a8a8a;
+      --text-muted: #555;
+      --accent: #c8902a;
+      --accent-dim: rgba(200, 144, 42, 0.15);
+      --accent-glow: rgba(200, 144, 42, 0.25);
+      --font: 'Outfit', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+    }
+
+    .nav-logo-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .nav-logo-text span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      padding: 0.5rem 1.25rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* HERO */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      gap: 4rem;
+    }
+
+    .hero-left { padding: 2rem 0; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent-dim);
+      background: var(--accent-dim);
+      padding: 0.35rem 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-tag-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 .line-1 { display: block; color: var(--text-primary); }
+    .hero-h1 .line-2 {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 46ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 4/5;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero-visual-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .portfolio-art {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 2rem;
+    }
+
+    .portfolio-strip {
+      height: 56px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1rem;
+      animation: slideIn 0.6s ease both;
+    }
+
+    .portfolio-strip:nth-child(1) { animation-delay: 0.1s; }
+    .portfolio-strip:nth-child(2) { animation-delay: 0.2s; }
+    .portfolio-strip:nth-child(3) { animation-delay: 0.3s; }
+    .portfolio-strip:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-16px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .portfolio-indicator {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .portfolio-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .portfolio-status {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .hero-visual-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: -1.5rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .hero-visual-badge-sub { font-size: 0.68rem; font-weight: 400; opacity: 0.7; margin-top: 2px; }
+
+    /* MARQUEE */
+    .marquee-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 1rem 0;
+      background: var(--surface);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 25s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .marquee-sep { color: var(--accent); }
+
+    /* SECTIONS SHARED */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 52ch;
+    }
+
+    /* SECTORS GRID */
+    .sectors-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 3.5rem;
+    }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .sector-card {
+      background: var(--bg);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .sector-card:hover { background: var(--surface); }
+
+    .sector-card-icon {
+      width: 44px; height: 44px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-dim);
+      border: 1px solid rgba(200,144,42,0.2);
+    }
+
+    .sector-card-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+
+    .sector-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .sector-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .stat-block {
+      padding: 1.75rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-block:nth-child(2), .stat-block:nth-child(4) { border-right: none; }
+    .stat-block:nth-child(3), .stat-block:nth-child(4) { border-bottom: none; }
+
+    .stat-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-number span { color: var(--accent); }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-image-box {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about-image-pattern {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+    }
+
+    .pattern-cell {
+      border: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .pattern-cell.lit { background: var(--accent-dim); }
+
+    .about-tag {
+      position: absolute;
+      top: -1rem;
+      left: -1.5rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      padding: 1rem 1.25rem;
+      font-size: 0.8rem;
+    }
+
+    .about-tag strong { display: block; font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.15rem; }
+    .about-tag span { color: var(--text-secondary); font-size: 0.75rem; }
+
+    /* FILING & CORPORATE DETAILS */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .location-map {
+      aspect-ratio: 4/3;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-grid {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      gap: 1px;
+      padding: 1px;
+      background: var(--border);
+    }
+
+    .map-cell { background: var(--surface); }
+    .map-cell.road { background: var(--surface-2); }
+    .map-cell.active { background: var(--accent-dim); }
+
+    .map-pin {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .map-pin-dot {
+      width: 14px; height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+      animation: pinPulse 2s infinite;
+    }
+
+    @keyframes pinPulse {
+      0%, 100% { box-shadow: 0 0 0 3px var(--accent-glow); }
+      50% { box-shadow: 0 0 0 8px transparent; }
+    }
+
+    .map-pin-line {
+      width: 2px;
+      height: 20px;
+      background: var(--accent);
+    }
+
+    .address-block { padding-top: 1rem; }
+
+    .address-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .address-line:last-child { border-bottom: none; }
+
+    .address-icon {
+      width: 36px; height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .address-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+
+    .address-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      margin-bottom: 0.25rem;
+    }
+
+    .address-value {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* STRATEGIC TIMELINE */
+    .hours-table {
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+
+    .hours-day { color: var(--text-secondary); font-weight: 600; }
+    .hours-time { color: var(--text-primary); font-family: var(--mono); }
+    .hours-time.highlight { color: var(--accent); }
+
+    /* CTA */
+    .cta-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 3rem;
+    }
+
+    .cta-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      max-width: 22ch;
+    }
+
+    .cta-inner h2 span { color: var(--accent); }
+
+    .cta-actions { display: flex; gap: 1rem; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-reg {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-sep { color: var(--border-light); }
+
+    .footer-right {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 1.5rem; padding-top: 5rem; }
+      .hero-right { display: none; }
+      .sectors-header { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr; }
+      .about-section { grid-template-columns: 1fr; gap: 2rem; }
+      .about-visual { display: none; }
+      .location-grid { grid-template-columns: 1fr; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" fill="#1a1a1a"/>
+        <path d="M16 6 L26 13 L26 23 L16 28 L6 23 L6 13 Z" stroke="#c8902a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6 L16 28" stroke="#c8902a" stroke-width="1" stroke-dasharray="2 2"/>
+        <circle cx="16" cy="15" r="3" fill="#c8902a"/>
+      </svg>
+      <span class="nav-logo-text">Odunaike <span>Holdings</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#about">Philosophy</a></li>
+      <li><a href="#corporate">Corporate Registry</a></li>
+      <li><a href="#timeline">Filing Status</a></li>
+    </ul>
+    <button class="nav-cta" onclick="location.href='#contact'">Connect</button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        Active & Compliant — State of Wyoming
+      </div>
+      <h1 class="hero-h1">
+        <span class="line-1">Preserving capital.</span>
+        <span class="line-2">Architecting growth.</span>
+      </h1>
+      <p class="hero-sub">
+        Odunaike Holdings LLC operates as a modern diversified entity deployment platform. Built on asymmetric insights, structural stability, and absolute operational precision.
+      </p>
+      <div class="hero-actions">
+        <a href="#sectors" class="btn-primary">
+          Explore Portfolio
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+        <a href="#corporate" class="btn-ghost">View Filings</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <div class="hero-visual-inner">
+          <div class="portfolio-art">
+            <div class="portfolio-strip">
+              <div class="portfolio-indicator"></div>
+              <span class="portfolio-label">Private Equity Allocation</span>
+              <span class="portfolio-status">Active</span>
+            </div>
+            <div class="portfolio-strip">
+              <div class="portfolio-indicator" style="background: #3a3a3a;"></div>
+              <span class="portfolio-label">Digital Assets & Infrastructure</span>
+              <span class="portfolio-status">Core</span>
+            </div>
+            <div class="portfolio-strip">
+              <div class="portfolio-indicator" style="background: #7a6336;"></div>
+              <span class="portfolio-label">Real Estate Acquisitions</span>
+              <span class="portfolio-status">Growth</span>
+            </div>
+            <div class="portfolio-strip">
+              <div class="portfolio-indicator" style="background: #a1782a;"></div>
+              <span class="portfolio-label">Venture Capital Vehicles</span>
+              <span class="portfolio-status">Strategic</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual-badge">
+          Est. 2024
+          <div class="hero-visual-badge-sub">Wyoming, USA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Capital Preservation <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Asset Management <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Wyoming LLC Structure <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Asymmetric Risk-Reward <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Diversified Portfolios <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Long-Term Value Creation <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Strategic Equity Hold <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Capital Preservation <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Asset Management <span class="marquee-sep">//</span></span>
+      <span class="marquee-item">Wyoming LLC Structure <span class="marquee-sep">//</span></span>
+    </div>
+  </div>
+
+  <!-- SECTORS -->
+  <section id="sectors">
+    <div class="sectors-header">
+      <div>
+        <p class="section-label">— Investment Segments</p>
+        <h2 class="section-h2">Engineered for<br/>systemic scale.</h2>
+      </div>
+      <p class="section-sub">
+        We divide our capital and corporate structure into clean vertical pillars, optimizing for structural security, long-term upside, and strict regulatory compliance.
+      </p>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="sector-card-title">Asset Architecture</div>
+        <div class="sector-card-desc">Holding dynamic global equities, real-world assets, and private company instruments positioned for asymmetric growth cycles.</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" style="fill:none; stroke-width:1.5;"/><path d="M6 21h12M12 17v4"/></svg>
+        </div>
+        <div class="sector-card-title">Technology & Infrastructure</div>
+        <div class="sector-card-desc">Venture positions and strategic implementation frameworks across emerging technology, data management systems, and web networks.</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M19 21v-8a2 2 0 00-2-2H7a2 2 0 00-2 2v8M9 21v-4a1 1 0 011-1h4a1 1 0 011 1v4"/></svg>
+        </div>
+        <div class="sector-card-title">Real Estate Holdings</div>
+        <div class="sector-card-desc">Acquiring, developing, and maximizing industrial, commercial, and high-yield physical footprints across prime strategic locales.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / PHILOSOPHY -->
+  <section id="about" style="padding-top: 0;">
+    <div class="about-section">
+      <div>
+        <p class="section-label">— Corporate Philosophy</p>
+        <h2 class="section-h2">Uncompromising<br/>structural integrity.</h2>
+        <p class="section-sub">
+          Formally organized to serve as a robust capital container, Odunaike Holdings LLC applies systemic risk parameters to all deployment frameworks. We avoid transactional trends, anchoring operations around multi-decade longevity and precise diversification.
+        </p>
+        <div class="about-stats">
+          <div class="stat-block">
+            <div class="stat-number">2024<span>.</span></div>
+            <div class="stat-label">Year Chartered</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">100<span>%</span></div>
+            <div class="stat-label">Regulatory Compliance</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">WY<span> </span></div>
+            <div class="stat-label">Jurisdictional Status</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">LLC<span></span></div>
+            <div class="stat-label">Asset Shield Structure</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-image-box">
+          <div class="about-image-pattern" id="patternGrid"></div>
+        </div>
+        <div class="about-tag">
+          <strong>Wyoming SOS</strong>
+          <span>Entity ID: 2024-001503348</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORPORATE REGISTRY (LOCATION METADATA) -->
+  <section id="corporate">
+    <div class="location-grid">
+      <div>
+        <p class="section-label">— Legal Registry</p>
+        <h2 class="section-h2">State of Wyoming<br/>Filing Specifications.</h2>
+        <div class="address-block">
+          <div class="address-line">
+            <div class="address-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="address-label">Jurisdiction of Organization</div>
+              <div class="address-value">Office of the Secretary of State<br/>Cheyenne, WY, USA</div>
+            </div>
+          </div>
+          <div class="address-line">
+            <div class="address-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <div>
+              <div class="address-label">Formation Date</div>
+              <div class="address-value">17th September 2024 — 1:52 PM</div>
+            </div>
+          </div>
+          <div class="address-line">
+            <div class="address-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="address-label">Instrument Type</div>
+              <div class="address-value" style="font-family: var(--mono); font-size: 0.85rem;">Certificate of Organization</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="location-map">
+          <div class="map-grid" id="mapGrid"></div>
+          <div class="map-pin">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / STATS -->
+  <section id="timeline" style="padding-top: 0; padding-bottom: 4rem;">
+    <p class="section-label">— Operational Blueprint</p>
+    <h2 class="section-h2" style="margin-bottom: 0;">Verified Data<br/>& Authority.</h2>
+    <div class="hours-table">
+      <div class="hours-row">
+        <span class="hours-day">Entity Name</span>
+        <span class="hours-time highlight">Odunaike Holdings LLC</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Filing Authority</span>
+        <span class="hours-time">Chuck Gray, Secretary of State</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Authorized Agent Presenter</span>
+        <span class="hours-time">Nat Smith (Filed Online)</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Status</span>
+        <span class="hours-time highlight">Good Standing / Active</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip" id="contact">
+    <div class="cta-inner">
+      <h2>Initiate a corporate allocation <span>or direct partnership.</span></h2>
+      <div class="cta-actions">
+        <a href="mailto:relations@odunaikeholdings.com" class="btn-primary">
+          Secure Communications
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <span class="nav-logo-text" style="font-size:0.9rem;">Odunaike <span style="color:var(--accent)">Holdings</span></span>
+      <span class="footer-sep">|</span>
+      <span class="footer-reg">Formed September 17, 2024 &nbsp;&bull;&nbsp; Great Seal of the State of Wyoming Enforced</span>
+    </div>
+    <div class="footer-right">
+      &copy; 2026 Odunaike Holdings LLC. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Grid block background pattern simulation
+    const grid = document.getElementById('patternGrid');
+    if (grid) {
+      const cells = 48;
+      for (let i = 0; i < cells; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'pattern-cell';
+        grid.appendChild(cell);
+      }
+
+      function randomLight() {
+        const allCells = grid.querySelectorAll('.pattern-cell');
+        allCells.forEach(c => c.classList.remove('lit'));
+        const count = Math.floor(Math.random() * 8) + 4;
+        for (let i = 0; i < count; i++) {
+          const idx = Math.floor(Math.random() * cells);
+          allCells[idx].classList.add('lit');
+        }
+      }
+      randomLight();
+      setInterval(randomLight, 1400);
+    }
+
+    // Abstract Geographic/Topographic Matrix Grid Representation
+    const mapGrid = document.getElementById('mapGrid');
+    if (mapGrid) {
+      const rows = 8, cols = 10;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement('div');
+          const isRoad = r === 2 || r === 6 || c === 4 || c === 8;
+          const isActive = (r >= 2 && r <= 6) && (c >= 4 && c <= 8);
+          cell.className = 'map-cell' + (isRoad ? ' road' : '') + (isActive ? ' active' : '');
+          mapGrid.appendChild(cell);
+        }
+      }
+    }
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
