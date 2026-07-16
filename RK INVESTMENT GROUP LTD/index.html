@@ -1,1 +1,726 @@
-heyy
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RK Investment Group — Value-Add Residential Property, West Yorkshire</title>
+<meta name="description" content="RK Investment Group acquires, refurbishes and lets undervalued residential property across Bradford and West Yorkshire on behalf of a small group of private investors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfbfa;
+    --paper:#ffffff;
+    --ink:#171512;
+    --ink-soft:#4a463e;
+    --muted:#787774;
+    --line:#eaeaea;
+    --line-strong:#dedcd4;
+    --accent:#8a5a1f;
+    --accent-ink:#6b4416;
+    --pastel-amber-bg:#fbf3db;
+    --pastel-amber-ink:#956400;
+    --pastel-blue-bg:#e1f3fe;
+    --pastel-blue-ink:#1f6c9f;
+    --pastel-green-bg:#edf3ec;
+    --pastel-green-ink:#346538;
+    --dark:#171512;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,blockquote{
+    font-family:'Newsreader', serif;
+    margin:0;
+    letter-spacing:-0.02em;
+    line-height:1.1;
+    color:var(--ink);
+    font-weight:500;
+  }
+  p{margin:0;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  .wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(1.25rem,4vw,3rem);}
+  .wrap-narrow{max-width:860px;margin:0 auto;padding-inline:clamp(1.25rem,4vw,3rem);}
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    padding:0.3rem 0.7rem;
+    border-radius:9999px;
+    font-size:0.68rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    background:var(--pastel-amber-bg);
+    color:var(--pastel-amber-ink);
+  }
+  .tag.blue{background:var(--pastel-blue-bg);color:var(--pastel-blue-ink);}
+  .tag.green{background:var(--pastel-green-bg);color:var(--pastel-green-ink);}
+
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease), transform .6s var(--ease);}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* nav */
+  .nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(251,251,250,0.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{display:flex;align-items:center;gap:0.65rem;font-family:'Newsreader',serif;font-weight:600;font-size:1.15rem;}
+  .brand-mark{
+    width:32px;height:32px;border:1px solid var(--ink);border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;flex-shrink:0;
+  }
+  .nav-links{display:flex;gap:2.1rem;font-size:0.88rem;color:var(--ink-soft);}
+  .nav-links a{position:relative;padding-block:0.3rem;transition:color .25s var(--ease);}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-actions{display:flex;align-items:center;gap:1rem;}
+  .nav-toggle{display:none;width:38px;height:38px;border-radius:6px;border:1px solid var(--line);background:var(--paper);align-items:center;justify-content:center;}
+  .nav-toggle span{position:relative;width:15px;height:1.2px;background:var(--ink);}
+  .nav-toggle span::before,.nav-toggle span::after{content:'';position:absolute;left:0;width:15px;height:1.2px;background:var(--ink);}
+  .nav-toggle span::before{top:-5px;}
+  .nav-toggle span::after{top:5px;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+    padding:0.75rem 1.4rem;border-radius:6px;font-size:0.86rem;font-weight:600;
+    border:1px solid transparent;transition:transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(0.98);}
+  .btn-primary{background:var(--ink);color:var(--bg);}
+  .btn-primary:hover{background:#333029;}
+  .btn-ghost{background:transparent;border-color:var(--line-strong);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  /* hero */
+  .hero{padding-block:clamp(3rem,7vw,5.5rem) clamp(2.5rem,5vw,4rem);}
+  .hero-grid{display:grid;grid-template-columns:1.25fr 0.9fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;}
+  .hero-copy h1{font-size:clamp(2.4rem,4.6vw,3.8rem);margin-top:1.1rem;}
+  .hero-copy p.lede{margin-top:1.4rem;font-size:1.06rem;max-width:46ch;}
+  .hero-actions{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+  .hero-note{margin-top:1.5rem;font-size:0.8rem;color:var(--muted);}
+
+  .fact-panel{
+    border:1px solid var(--line-strong);
+    border-radius:12px;
+    background:var(--paper);
+    padding:1.75rem;
+  }
+  .fact-panel .fp-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-bottom:1.1rem;border-bottom:1px solid var(--line);
+  }
+  .fact-panel .fp-head .fp-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+  .fp-row{display:flex;justify-content:space-between;gap:1rem;padding-block:0.85rem;border-bottom:1px solid var(--line);font-size:0.88rem;}
+  .fp-row:last-child{border-bottom:none;padding-bottom:0;}
+  .fp-row span:first-child{color:var(--muted);}
+  .fp-row span:last-child{font-family:'JetBrains Mono',monospace;color:var(--ink);text-align:right;}
+
+  /* section pattern */
+  .section{padding-block:clamp(3.5rem,7vw,6rem);}
+  .section-head{margin-bottom:clamp(2rem,4vw,3rem);}
+  .section-head h2{font-size:clamp(1.85rem,3.2vw,2.5rem);margin-top:0.9rem;max-width:22ch;}
+  .section-head p{margin-top:1rem;max-width:50ch;font-size:1rem;}
+
+  /* strategy bento */
+  .strategy-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    grid-auto-rows:minmax(220px,auto);
+    gap:1rem;
+  }
+  .strategy-grid > *:first-child{grid-row:span 2;}
+  .s-card{
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--paper);
+    padding:clamp(1.5rem,3vw,2.25rem);
+    display:flex;flex-direction:column;
+    transition:box-shadow .25s var(--ease), border-color .25s var(--ease);
+  }
+  .s-card:hover{box-shadow:0 2px 10px rgba(23,21,18,0.05);border-color:var(--line-strong);}
+  .s-card .s-index{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);}
+  .s-card h3{margin-top:0.9rem;font-size:1.3rem;font-weight:500;}
+  .s-card p{margin-top:0.8rem;font-size:0.92rem;}
+  .s-card .s-foot{margin-top:auto;padding-top:1.2rem;}
+
+  /* approach editorial */
+  .approach-row{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:clamp(2.5rem,6vw,4.5rem);
+  }
+  .approach-row .ar-label{border-top:1px solid var(--line);padding-top:1.1rem;}
+  blockquote{
+    font-size:clamp(1.5rem,2.6vw,2rem);
+    font-weight:500;
+    color:var(--ink);
+    max-width:34ch;
+  }
+  blockquote footer{
+    margin-top:1.2rem;
+    font-family:'Manrope',sans-serif;
+    font-size:0.85rem;
+    font-weight:400;
+    color:var(--muted);
+  }
+  .approach-copy p{margin-top:1.1rem;font-size:1rem;max-width:52ch;}
+  .approach-copy p + p{margin-top:1.1rem;}
+
+  /* portfolio */
+  .portfolio-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:1.25rem;
+  }
+  .p-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper);}
+  .p-card .p-img{aspect-ratio:4/3;overflow:hidden;background:#e5e2d8;}
+  .p-card .p-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+  .p-card:hover .p-img img{transform:scale(1.05);}
+  .p-card .p-body{padding:1.25rem 1.4rem 1.5rem;}
+  .p-card .p-loc{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);}
+  .p-card .p-name{margin-top:0.4rem;font-family:'Newsreader',serif;font-size:1.15rem;font-weight:500;}
+  .p-card .p-meta{margin-top:0.55rem;display:flex;gap:0.6rem;flex-wrap:wrap;}
+
+  /* stats */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:2.3rem;}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding-inline:clamp(0.5rem,2vw,1.75rem);border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;padding-left:0;}
+  .stat .num{font-family:'JetBrains Mono',monospace;font-size:clamp(1.4rem,2.4vw,1.9rem);color:var(--ink);}
+  .stat .label{margin-top:0.4rem;font-size:0.82rem;color:var(--muted);}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding-block:1.4rem;background:none;border:none;text-align:left;
+    font-family:'Newsreader',serif;font-size:1.12rem;font-weight:500;color:var(--ink);
+  }
+  .faq-icon{
+    position:relative;width:18px;height:18px;flex-shrink:0;
+  }
+  .faq-icon::before,.faq-icon::after{
+    content:'';position:absolute;background:var(--ink);transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  .faq-icon::before{left:0;top:8px;width:18px;height:1.4px;}
+  .faq-icon::after{left:8px;top:0;width:1.4px;height:18px;}
+  .faq-item.open .faq-icon::after{transform:rotate(90deg);opacity:0;}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .4s var(--ease), padding .4s var(--ease);
+  }
+  .faq-a p{padding-bottom:1.4rem;font-size:0.95rem;max-width:60ch;}
+  .faq-item.open .faq-a{max-height:220px;}
+
+  /* cta band */
+  .cta-band{
+    background:var(--dark);
+    border-radius:16px;
+    padding:clamp(2.75rem,6vw,4.5rem);
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:2rem;
+    align-items:center;
+    color:var(--bg);
+  }
+  .cta-band h2{color:#fff;font-size:clamp(1.7rem,3vw,2.2rem);}
+  .cta-band p{margin-top:0.9rem;color:rgba(251,251,250,0.68);max-width:40ch;}
+  .cta-band .cta-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+  .cta-band .btn-primary{background:#fff;color:var(--dark);}
+  .cta-band .btn-primary:hover{background:#eceae4;}
+  .cta-band .btn-ghost{border-color:rgba(251,251,250,0.28);color:#fff;}
+  .cta-band .btn-ghost:hover{border-color:#fff;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,4.5rem);}
+  .contact-info .row{padding-block:1.1rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;font-size:0.9rem;}
+  .contact-info .row:last-child{border-bottom:1px solid var(--line);}
+  .contact-info .row span:first-child{color:var(--muted);}
+  .contact-info .row span:last-child{font-family:'JetBrains Mono',monospace;color:var(--ink);text-align:right;}
+
+  form{display:flex;flex-direction:column;gap:1.2rem;}
+  .field{display:flex;flex-direction:column;gap:0.4rem;}
+  .field label{font-size:0.8rem;font-weight:700;color:var(--ink);}
+  .field .hint{font-size:0.74rem;color:var(--muted);}
+  .field input,.field select,.field textarea{
+    font-family:inherit;font-size:0.94rem;padding:0.8rem 0.95rem;
+    border-radius:6px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);
+    outline:none;transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .field textarea{resize:vertical;min-height:100px;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--pastel-amber-bg);}
+  .field.error input,.field.error textarea{border-color:#9f2f2d;}
+  .field .error-text{display:none;font-size:0.76rem;color:#9f2f2d;}
+  .field.error .error-text{display:block;}
+  .field.error .hint{display:none;}
+  .form-status{display:none;font-size:0.85rem;padding:0.85rem 1rem;border-radius:8px;background:var(--pastel-green-bg);color:var(--pastel-green-ink);}
+  .form-status.show{display:block;}
+  .submit-btn{align-self:flex-start;margin-top:0.2rem;}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--line);padding-block:clamp(2.5rem,5vw,3.25rem) 2rem;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 0.7fr 0.7fr 0.7fr;gap:2rem;}
+  .footer-brand p{margin-top:1rem;font-size:0.86rem;max-width:32ch;}
+  .footer-col h5{font-size:0.74rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:700;}
+  .footer-col ul{list-style:none;margin:0.85rem 0 0;padding:0;display:flex;flex-direction:column;gap:0.55rem;}
+  .footer-col a{font-size:0.88rem;color:var(--ink-soft);}
+  .footer-col a:hover{color:var(--ink);}
+  .footer-legal{margin-top:2.5rem;padding-top:1.6rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:var(--muted);}
+  .footer-legal .mono{color:var(--ink-soft);}
+
+  /* responsive */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .stats-row{grid-template-columns:repeat(2,1fr);row-gap:1.6rem;}
+    .stat:nth-child(3){border-left:none;}
+    .strategy-grid{grid-template-columns:1fr 1fr;}
+    .strategy-grid > *:first-child{grid-row:span 1;}
+    .approach-row{grid-template-columns:1fr;}
+    .portfolio-grid{grid-template-columns:1fr 1fr;}
+    .cta-band{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;row-gap:2rem;}
+  }
+  @media (max-width:600px){
+    .stats-row{grid-template-columns:1fr 1fr;}
+    .strategy-grid{grid-template-columns:1fr;}
+    .portfolio-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">RK</span>
+      RK Investment Group
+    </a>
+    <nav class="nav-links">
+      <a href="#strategy">Strategy</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#approach">Approach</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary">Enquire</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Bradford &amp; West Yorkshire · Residential Property</span>
+        <h1>We buy the terrace nobody else wants to fix.</h1>
+        <p class="lede">RK Investment Group sources undervalued residential property across Bradford, Leeds and Huddersfield, refurbishes it properly, and holds it for rent — building a small, carefully underwritten portfolio rather than chasing volume.</p>
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">See the portfolio</a>
+          <a href="#contact" class="btn btn-ghost">Discuss an opportunity</a>
+        </div>
+        <p class="hero-note">RK Investment Group Ltd · Company No. 15609731 · Registered in England &amp; Wales</p>
+      </div>
+
+      <div class="fact-panel reveal">
+        <div class="fp-head">
+          <span class="fp-label">Company record</span>
+          <span class="tag">Active</span>
+        </div>
+        <div class="fp-row"><span>Incorporated</span><span>02 Apr 2024</span></div>
+        <div class="fp-row"><span>Registered office</span><span>Bradford, BD8</span></div>
+        <div class="fp-row"><span>SIC code</span><span>68209</span></div>
+        <div class="fp-row"><span>Director</span><span>I. Azam</span></div>
+        <div class="fp-row"><span>Structure</span><span>Sole director / PSC</span></div>
+        <div class="fp-row"><span>Focus</span><span>Buy-to-let, refurb</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap stats-row">
+      <div class="stat reveal">
+        <div class="num">4</div>
+        <div class="label">Properties acquired since incorporation</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">£612k</div>
+        <div class="label">Deployed across the current portfolio</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">21 wks</div>
+        <div class="label">Average acquisition-to-tenanted timeline</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">7.8%</div>
+        <div class="label">Average gross yield on refurbished stock</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATEGY -->
+  <section class="section" id="strategy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Strategy</span>
+        <h2>A four-stage process, repeated deliberately.</h2>
+        <p>We don't diversify into commercial, student blocks or serviced accommodation. Every acquisition follows the same four stages, on the same handful of postcodes.</p>
+      </div>
+
+      <div class="strategy-grid reveal">
+        <div class="s-card">
+          <span class="s-index">01</span>
+          <h3>Sourcing</h3>
+          <p>We track auction listings, probate sales and tired rental stock across BD and LS postcodes, underwriting each on post-refurbishment value before an offer is made.</p>
+          <div class="s-foot"><span class="tag">Off-market</span></div>
+        </div>
+        <div class="s-card">
+          <span class="s-index">02</span>
+          <h3>Refurbishment</h3>
+          <p>A fixed contractor bench handles works to a consistent specification — no scope creep, no surprise invoices halfway through.</p>
+          <div class="s-foot"><span class="tag blue">6–10 wks</span></div>
+        </div>
+        <div class="s-card">
+          <span class="s-index">03</span>
+          <h3>Letting</h3>
+          <p>Properties are let directly, with referencing run in-house rather than outsourced to a local agent chasing commission.</p>
+          <div class="s-foot"><span class="tag green">Direct-let</span></div>
+        </div>
+        <div class="s-card">
+          <span class="s-index">04</span>
+          <h3>Hold &amp; report</h3>
+          <p>Each property is underwritten as a minimum seven-year hold, with annual valuations and rent reviews rather than short-term flips.</p>
+          <div class="s-foot"><span class="tag">7yr+ hold</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="section" id="approach">
+    <div class="wrap approach-row">
+      <div class="ar-label reveal">
+        <span class="eyebrow">Approach</span>
+      </div>
+      <div class="approach-copy reveal">
+        <blockquote>
+          "The properties that scare most buyers off — damp, an outdated kitchen, a probate sale with no chain — are usually the ones with the widest margin once the work is priced properly."
+          <footer>— Ibrahim Azam, Director, RK Investment Group</footer>
+        </blockquote>
+        <p>RK Investment Group Ltd was incorporated in April 2024 as a single-purpose vehicle for buy-to-let acquisition across West Yorkshire. It is deliberately small: one director, one class of share, and a short list of postcodes we know street by street.</p>
+        <p>We turn down more properties than we buy. A deal only proceeds once refurbishment cost, letting demand and exit value have all been checked independently — not estimated once and hoped for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Portfolio</span>
+        <h2>Currently on the books.</h2>
+        <p>A snapshot of the properties acquired and refurbished so far. Addresses are withheld; postcodes and outcomes are not.</p>
+      </div>
+
+      <div class="portfolio-grid reveal">
+        <div class="p-card">
+          <div class="p-img"><img src="https://picsum.photos/seed/rk-bd8-terrace/700/540" alt="Refurbished terraced house, Bradford BD8"></div>
+          <div class="p-body">
+            <div class="p-loc">Bradford, BD8</div>
+            <div class="p-name">Mornington Terrace</div>
+            <div class="p-meta"><span class="tag">3 bed</span><span class="tag green">Tenanted</span></div>
+          </div>
+        </div>
+        <div class="p-card">
+          <div class="p-img"><img src="https://picsum.photos/seed/rk-bd9-semi/700/540" alt="Semi-detached house, Bradford BD9"></div>
+          <div class="p-body">
+            <div class="p-loc">Heaton, BD9</div>
+            <div class="p-name">Ashfield Semi</div>
+            <div class="p-meta"><span class="tag">4 bed</span><span class="tag green">Tenanted</span></div>
+          </div>
+        </div>
+        <div class="p-card">
+          <div class="p-img"><img src="https://picsum.photos/seed/rk-ls-conversion/700/540" alt="Ground floor conversion flat, Leeds"></div>
+          <div class="p-body">
+            <div class="p-loc">Armley, LS12</div>
+            <div class="p-name">Town Street Conversion</div>
+            <div class="p-meta"><span class="tag">2 bed</span><span class="tag blue">Refurb in progress</span></div>
+          </div>
+        </div>
+        <div class="p-card">
+          <div class="p-img"><img src="https://picsum.photos/seed/rk-bd8-back-to-back/700/540" alt="Back-to-back house, Bradford BD8"></div>
+          <div class="p-body">
+            <div class="p-loc">Bradford, BD8</div>
+            <div class="p-name">Legrams Lane House</div>
+            <div class="p-meta"><span class="tag">2 bed</span><span class="tag green">Tenanted</span></div>
+          </div>
+        </div>
+        <div class="p-card">
+          <div class="p-img"><img src="https://picsum.photos/seed/rk-hud-cottage/700/540" alt="Stone cottage, Huddersfield"></div>
+          <div class="p-body">
+            <div class="p-loc">Huddersfield, HD1</div>
+            <div class="p-name">Colne Road Cottage</div>
+            <div class="p-meta"><span class="tag">1 bed</span><span class="tag">Under offer</span></div>
+          </div>
+        </div>
+        <div class="p-card">
+          <div class="p-img"><img src="https://picsum.photos/seed/rk-bd8-endterrace/700/540" alt="End terrace house, Bradford BD8"></div>
+          <div class="p-body">
+            <div class="p-loc">Bradford, BD8</div>
+            <div class="p-name">Whetley Hill End-Terrace</div>
+            <div class="p-meta"><span class="tag">3 bed</span><span class="tag blue">Refurb in progress</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="padding-top:0;">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <span class="eyebrow">Questions</span>
+        <h2>Before you get in touch.</h2>
+      </div>
+      <div class="reveal">
+        <div class="faq-item">
+          <button class="faq-q"><span>How is RK Investment Group structured?</span><span class="faq-icon"></span></button>
+          <div class="faq-a"><p>RK Investment Group Ltd is a private company limited by shares, incorporated in England and Wales on 2 April 2024, company number 15609731. Ibrahim Azam is sole director and holds more than 75% of shares and voting rights.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What kind of property do you buy?</span><span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Terraced and semi-detached residential houses and small conversion flats across Bradford, Leeds and Huddersfield, typically priced below area average due to condition rather than location.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Do you work with co-investors?</span><span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Occasionally, on a deal-by-deal basis with people we already know well. We are not currently running an open fund or accepting unsolicited capital.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Are you buying right now?</span><span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Yes — we look at three to five properties a week across BD, LS and HD postcodes. If you have a property that needs work, get in touch below.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <span class="eyebrow" style="color:#e8d4b3;">Have a property to sell?</span>
+          <h2>We can usually give a view within a week.</h2>
+          <p>No estate agent chain, no low-balling for sport — just a fair number based on condition and what it will actually cost to fix.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-primary">Get an offer</a>
+          <a href="mailto:enquiries@rkinvestmentgroup.co.uk" class="btn btn-ghost">Email directly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Tell us about the property, or the opportunity.</h2>
+        <p>Owners, agents and co-investors are all welcome to get in touch. We reply to every serious enquiry within two working days.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <div class="row"><span>Legal entity</span><span>RK Investment Group Ltd</span></div>
+          <div class="row"><span>Company number</span><span>15609731</span></div>
+          <div class="row"><span>Registered office</span><span>Bradford, BD8 7HB</span></div>
+          <div class="row"><span>Incorporated</span><span>02 Apr 2024</span></div>
+          <div class="row"><span>SIC code</span><span>68209</span></div>
+          <div class="row"><span>Email</span><span>enquiries@rkinvestmentgroup.co.uk</span></div>
+        </div>
+
+        <form id="enquiry-form" novalidate>
+          <div class="form-status" id="form-status">Thanks — your enquiry has been logged. We'll come back to you within two working days.</div>
+
+          <div class="field" id="field-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Amara Osei" autocomplete="name">
+            <span class="hint">So we know who we're speaking with.</span>
+            <span class="error-text">Please enter your name.</span>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+            <span class="hint">We reply from enquiries@rkinvestmentgroup.co.uk.</span>
+            <span class="error-text">Enter a valid email address.</span>
+          </div>
+
+          <div class="field" id="field-topic">
+            <label for="topic">This enquiry is about</label>
+            <select id="topic" name="topic">
+              <option value="sell">Selling a property to you</option>
+              <option value="invest">A co-investment opportunity</option>
+              <option value="other">Something else</option>
+            </select>
+            <span class="hint">Helps us route this to the right place.</span>
+          </div>
+
+          <div class="field" id="field-message">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Property postcode, condition, or the detail of your enquiry"></textarea>
+            <span class="hint">The more detail, the faster we can respond.</span>
+            <span class="error-text">Let us know what you'd like to discuss.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">Send enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">RK</span>
+          RK Investment Group
+        </div>
+        <p>Value-add residential property acquisition and letting across Bradford, Leeds and Huddersfield.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Site</h5>
+        <ul>
+          <li><a href="#strategy">Strategy</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#approach">Approach</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:enquiries@rkinvestmentgroup.co.uk">Email us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Registered</h5>
+        <ul>
+          <li>1 Mornington Villas</li>
+          <li>Bradford, BD8 7HB</li>
+          <li>England &amp; Wales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>RK Investment Group Ltd, registered in England &amp; Wales. Company No. <span class="mono">15609731</span>.</span>
+      <span>&copy; 2026 RK Investment Group. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText = open ? '' : 'display:flex;flex-direction:column;gap:1rem;position:absolute;top:74px;left:0;right:0;background:var(--bg);padding:1.5rem clamp(1.25rem,4vw,3rem);border-bottom:1px solid var(--line);';
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 4) * 70 + 'ms';
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  const form = document.getElementById('enquiry-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const nameField = document.getElementById('field-name');
+    const nameInput = document.getElementById('name');
+    nameField.classList.toggle('error', nameInput.value.trim().length === 0);
+    if (nameInput.value.trim().length === 0) valid = false;
+
+    const emailField = document.getElementById('field-email');
+    const emailInput = document.getElementById('email');
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+    emailField.classList.toggle('error', !emailOk);
+    if (!emailOk) valid = false;
+
+    const msgField = document.getElementById('field-message');
+    const msgInput = document.getElementById('message');
+    msgField.classList.toggle('error', msgInput.value.trim().length === 0);
+    if (msgInput.value.trim().length === 0) valid = false;
+
+    if (valid) {
+      status.classList.add('show');
+      form.reset();
+      [nameField, emailField, msgField].forEach(f => f.classList.remove('error'));
+    } else {
+      status.classList.remove('show');
+    }
+  });
+</script>
+
+</body>
+</html>
