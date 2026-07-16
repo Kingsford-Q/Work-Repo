@@ -1,1 +1,1085 @@
-Heyy
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyric Square Residences — West London Residential Portfolio</title>
+<meta name="description" content="Lyric Square Residences is a boutique residential letting and portfolio management company operating across West London, held by GG-001-726 Limited.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16160f;
+    --ink-soft:#3d3c34;
+    --muted:#726f62;
+    --line:#e5e2d8;
+    --line-soft:#eeece3;
+    --paper:#faf9f4;
+    --paper-raised:#ffffff;
+    --accent:#2f5f47;
+    --accent-soft:#e6ede8;
+    --accent-ink:#1f4433;
+    --dark:#17170f;
+    --dark-soft:#232319;
+    --radius-lg:2.25rem;
+    --radius-md:1.25rem;
+    --radius-sm:0.6rem;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Outfit', sans-serif;
+    margin:0;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;}
+
+  .wrap{
+    max-width:1360px;
+    margin:0 auto;
+    padding-inline:clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .eyebrow::before{
+    content:'';
+    width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+    animation:pulse-dot 2.4s var(--ease) infinite;
+  }
+  @keyframes pulse-dot{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.45;transform:scale(0.72);}
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:40;
+    background:rgba(250,249,244,0.86);
+    backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:0.65rem;
+    font-family:'Outfit', sans-serif;
+    font-weight:600;
+    font-size:1.02rem;
+  }
+  .brand-mark{
+    width:34px;height:34px;
+    border-radius:9px;
+    background:var(--dark);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper);
+    font-family:'Outfit', sans-serif;
+    font-weight:700;
+    font-size:0.82rem;
+    flex-shrink:0;
+  }
+  .nav-links{
+    display:flex;
+    gap:2.2rem;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .nav-links a{
+    position:relative;
+    padding-block:0.3rem;
+    transition:color 0.25s var(--ease);
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0%;height:1.5px;
+    background:var(--accent);
+    transition:width 0.35s var(--ease);
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-actions{display:flex;align-items:center;gap:1rem;}
+  .nav-toggle{
+    display:none;
+    width:40px;height:40px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    align-items:center;justify-content:center;
+  }
+  .nav-toggle span{
+    position:relative;
+    width:16px;height:1.4px;background:var(--ink);
+  }
+  .nav-toggle span::before,.nav-toggle span::after{
+    content:'';
+    position:absolute;left:0;
+    width:16px;height:1.4px;background:var(--ink);
+  }
+  .nav-toggle span::before{top:-5px;}
+  .nav-toggle span::after{top:5px;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.5rem;
+    padding:0.78rem 1.5rem;
+    border-radius:999px;
+    font-size:0.88rem;
+    font-weight:600;
+    border:1px solid transparent;
+    transition:transform 0.32s var(--ease), box-shadow 0.32s var(--ease), background 0.25s var(--ease), border-color .25s var(--ease);
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{
+    background:var(--dark);
+    color:var(--paper);
+  }
+  .btn-primary:hover{
+    box-shadow:0 14px 28px -14px rgba(23,23,15,0.45);
+    transform:translateY(-2px);
+  }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-block:clamp(3rem, 7vw, 5.5rem) clamp(2rem, 5vw, 3.5rem);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:clamp(2rem, 5vw, 4rem);
+    align-items:center;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.35rem, 4.6vw, 4rem);
+    line-height:1.04;
+    font-weight:600;
+    margin-top:1.1rem;
+  }
+  .hero-copy h1 em{
+    font-style:normal;
+    color:var(--accent-ink);
+  }
+  .hero-copy p.lede{
+    margin-top:1.4rem;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:2.1rem;
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .hero-note{
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+  .hero-visual{
+    position:relative;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    aspect-ratio:4/5;
+    background:var(--dark);
+  }
+  .hero-visual img{
+    width:100%;height:100%;object-fit:cover;
+    transform:scale(1.02);
+    transition:transform 6s var(--ease);
+  }
+  .hero-visual:hover img{transform:scale(1.09);}
+  .hero-visual::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(23,23,15,0) 45%, rgba(23,23,15,0.62) 100%);
+  }
+  .hero-tag{
+    position:absolute;
+    left:1.25rem;bottom:1.25rem;
+    z-index:2;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    gap:0.15rem;
+  }
+  .hero-tag .t1{font-size:0.95rem;font-weight:600;font-family:'Outfit',sans-serif;}
+  .hero-tag .t2{font-size:0.78rem;color:rgba(255,255,255,0.78);}
+  .hero-badge{
+    position:absolute;
+    top:1.1rem;right:1.1rem;
+    z-index:2;
+    background:rgba(250,249,244,0.92);
+    backdrop-filter:blur(6px);
+    border-radius:999px;
+    padding:0.45rem 0.85rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    color:var(--ink);
+    display:flex;align-items:center;gap:0.4rem;
+  }
+  .hero-badge::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);
+  }
+
+  /* ---------- stats ---------- */
+  .stats{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding-block:2.4rem;
+  }
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .stat{
+    padding-inline:clamp(0.5rem,2vw,1.75rem);
+    border-left:1px solid var(--line-soft);
+  }
+  .stat:first-child{border-left:none;padding-left:0;}
+  .stat .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:clamp(1.5rem,2.6vw,2.15rem);
+    font-weight:500;
+    color:var(--ink);
+  }
+  .stat .label{
+    margin-top:0.4rem;
+    font-size:0.83rem;
+    color:var(--muted);
+  }
+
+  /* ---------- section heading pattern ---------- */
+  .section{padding-block:clamp(3.5rem, 7vw, 6.5rem);}
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    align-items:end;
+    margin-bottom:clamp(2rem,4vw,3.25rem);
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem,3.2vw,2.6rem);
+    font-weight:600;
+    margin-top:0.85rem;
+  }
+  .section-head .desc{
+    color:var(--ink-soft);
+    font-size:1rem;
+    max-width:42ch;
+    justify-self:end;
+  }
+
+  /* ---------- portfolio bento ---------- */
+  .bento{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    grid-auto-rows:16rem;
+    gap:1rem;
+  }
+  .bento-item{
+    position:relative;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    background:var(--dark-soft);
+  }
+  .bento-item.tall{grid-row:span 2;}
+  .bento-item img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform 0.7s var(--ease), filter 0.7s var(--ease);
+  }
+  .bento-item:hover img{transform:scale(1.06);}
+  .bento-item::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(23,23,15,0) 40%, rgba(15,15,10,0.75) 100%);
+    opacity:0.9;
+    transition:opacity .4s var(--ease);
+  }
+  .bento-info{
+    position:absolute;left:1.1rem;right:1.1rem;bottom:1rem;
+    z-index:2;color:#fff;
+  }
+  .bento-info .loc{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.72);
+  }
+  .bento-info .name{
+    margin-top:0.3rem;
+    font-family:'Outfit',sans-serif;
+    font-weight:600;
+    font-size:1.08rem;
+  }
+  .bento-info .meta{
+    margin-top:0.35rem;
+    font-size:0.78rem;
+    color:rgba(255,255,255,0.85);
+    display:flex;gap:0.9rem;
+  }
+
+  /* ---------- services zig-zag ---------- */
+  .service-row{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:clamp(2rem,5vw,4.5rem);
+    align-items:center;
+    padding-block:clamp(2.75rem,5vw,4rem);
+    border-top:1px solid var(--line);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-row.flip .service-copy{order:2;}
+  .service-row.flip .service-visual{order:1;}
+  .service-index{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+  .service-copy h3{
+    margin-top:0.8rem;
+    font-size:clamp(1.35rem,2.3vw,1.85rem);
+    font-weight:600;
+  }
+  .service-copy p{
+    margin-top:0.95rem;
+    color:var(--ink-soft);
+    max-width:44ch;
+  }
+  .service-list{
+    margin-top:1.4rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.55rem;
+  }
+  .service-list div{
+    display:flex;
+    gap:0.6rem;
+    align-items:baseline;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+  .service-list div::before{
+    content:'';
+    width:5px;height:5px;
+    border-radius:1px;
+    background:var(--accent);
+    transform:rotate(45deg);
+    flex-shrink:0;
+    margin-top:0.45rem;
+  }
+  .service-visual{
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    aspect-ratio:5/4;
+    background:var(--dark);
+  }
+  .service-visual img{width:100%;height:100%;object-fit:cover;}
+
+  /* ---------- approach / about ---------- */
+  .approach{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:clamp(2.5rem,6vw,5rem);
+    align-items:start;
+  }
+  .approach-visual{
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    aspect-ratio:3/4;
+    position:sticky;
+    top:6.5rem;
+  }
+  .approach-visual img{width:100%;height:100%;object-fit:cover;}
+  .approach-copy h2{
+    font-size:clamp(1.9rem,3.4vw,2.7rem);
+    font-weight:600;
+    margin-top:0.9rem;
+  }
+  .approach-copy > p{
+    margin-top:1.3rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+  .approach-grid{
+    margin-top:2.4rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.75rem 2rem;
+  }
+  .approach-grid .card{
+    padding-top:1.1rem;
+    border-top:1px solid var(--line);
+  }
+  .approach-grid h4{
+    font-size:1rem;
+    font-weight:600;
+  }
+  .approach-grid p{
+    margin-top:0.55rem;
+    font-size:0.9rem;
+    color:var(--muted);
+  }
+  blockquote{
+    margin:2.6rem 0 0;
+    padding-left:1.4rem;
+    border-left:2px solid var(--accent);
+    font-family:'Outfit',sans-serif;
+    font-size:1.18rem;
+    font-weight:500;
+    color:var(--ink);
+    max-width:52ch;
+  }
+  blockquote footer{
+    margin-top:0.9rem;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:0.85rem;
+    font-weight:400;
+    color:var(--muted);
+  }
+
+  /* ---------- cta band ---------- */
+  .cta-band{
+    background:var(--dark);
+    border-radius:var(--radius-lg);
+    padding:clamp(2.75rem,6vw,4.5rem);
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:2rem;
+    align-items:center;
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-band::before{
+    content:'';
+    position:absolute;
+    width:420px;height:420px;
+    right:-140px;top:-160px;
+    background:radial-gradient(circle, rgba(47,95,71,0.55), transparent 70%);
+    pointer-events:none;
+  }
+  .cta-band h2{
+    color:#fff;
+    font-size:clamp(1.7rem,3vw,2.3rem);
+    font-weight:600;
+    position:relative;
+  }
+  .cta-band p{
+    margin-top:0.9rem;
+    color:rgba(250,249,244,0.72);
+    max-width:40ch;
+    position:relative;
+  }
+  .cta-band .cta-actions{
+    display:flex;
+    justify-content:flex-start;
+    gap:1rem;
+    flex-wrap:wrap;
+    position:relative;
+  }
+  .cta-band .btn-primary{background:var(--paper);color:var(--dark);}
+  .cta-band .btn-primary:hover{box-shadow:0 14px 28px -14px rgba(0,0,0,0.5);}
+  .cta-band .btn-ghost{border-color:rgba(250,249,244,0.3);color:#fff;}
+  .cta-band .btn-ghost:hover{border-color:#fff;}
+
+  /* ---------- contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(2.5rem,6vw,4.5rem);
+  }
+  .contact-info .row{
+    padding-block:1.15rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    font-size:0.92rem;
+  }
+  .contact-info .row:last-child{border-bottom:1px solid var(--line);}
+  .contact-info .row span:first-child{color:var(--muted);}
+  .contact-info .row span:last-child{color:var(--ink);text-align:right;}
+
+  form{display:flex;flex-direction:column;gap:1.25rem;}
+  .field{display:flex;flex-direction:column;gap:0.45rem;}
+  .field label{
+    font-size:0.82rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .field .hint{
+    font-size:0.76rem;
+    color:var(--muted);
+  }
+  .field input,.field textarea{
+    font-family:inherit;
+    font-size:0.95rem;
+    padding:0.85rem 1rem;
+    border-radius:0.75rem;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    color:var(--ink);
+    outline:none;
+    transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .field textarea{resize:vertical;min-height:110px;}
+  .field input:focus,.field textarea:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--accent-soft);
+  }
+  .field.error input,.field.error textarea{border-color:#a13d3d;}
+  .field .error-text{
+    display:none;
+    font-size:0.78rem;
+    color:#a13d3d;
+  }
+  .field.error .error-text{display:block;}
+  .field.error .hint{display:none;}
+  .form-status{
+    display:none;
+    font-size:0.86rem;
+    padding:0.9rem 1rem;
+    border-radius:0.75rem;
+    background:var(--accent-soft);
+    color:var(--accent-ink);
+  }
+  .form-status.show{display:block;}
+  .submit-btn{align-self:flex-start;margin-top:0.25rem;}
+
+  /* ---------- footer ---------- */
+  footer.site{
+    border-top:1px solid var(--line);
+    padding-block:clamp(2.5rem,5vw,3.5rem) 2rem;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.3fr 0.7fr 0.7fr 0.7fr;
+    gap:2rem;
+  }
+  .footer-brand p{
+    margin-top:1rem;
+    color:var(--muted);
+    font-size:0.88rem;
+    max-width:32ch;
+  }
+  .footer-col h5{
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .footer-col ul{list-style:none;margin:0.9rem 0 0;padding:0;display:flex;flex-direction:column;gap:0.6rem;}
+  .footer-col a{font-size:0.9rem;color:var(--ink-soft);transition:color .2s;}
+  .footer-col a:hover{color:var(--ink);}
+  .footer-legal{
+    margin-top:2.75rem;
+    padding-top:1.75rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:1rem;
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+  .footer-legal .mono{color:var(--ink-soft);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{aspect-ratio:16/11;order:-1;}
+    .stats-row{grid-template-columns:repeat(2,1fr);row-gap:1.75rem;}
+    .stat:nth-child(3){border-left:none;}
+    .section-head{grid-template-columns:1fr;}
+    .section-head .desc{justify-self:start;}
+    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:13rem;}
+    .bento-item.tall{grid-row:span 1;}
+    .service-row{grid-template-columns:1fr;}
+    .service-row.flip .service-copy,.service-row.flip .service-visual{order:0;}
+    .approach{grid-template-columns:1fr;}
+    .approach-visual{position:relative;top:0;aspect-ratio:16/10;}
+    .cta-band{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;row-gap:2rem;}
+  }
+  @media (max-width:560px){
+    .stats-row{grid-template-columns:1fr 1fr;}
+    .bento{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">LS</span>
+      Lyric Square Residences
+    </a>
+    <nav class="nav-links">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary">Enquire</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">West London · Residential Letting</span>
+        <h1>Considered homes, <em>managed properly</em>, across Hammersmith and Fulham.</h1>
+        <p class="lede">Lyric Square Residences sources, lets and manages a small residential portfolio for long-term owners — held under GG-001-726 Limited, registered in England and Wales.</p>
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">View the portfolio</a>
+          <a href="#contact" class="btn btn-ghost">Talk to us</a>
+        </div>
+        <p class="hero-note">Company No. 15609871 · Registered office, 1 Lyric Square, London W6 0NB</p>
+      </div>
+      <div class="hero-visual reveal">
+        <span class="hero-badge">Currently letting</span>
+        <img src="https://picsum.photos/seed/lyric-hero-24/900/1120" alt="Interior of a Lyric Square Residences managed apartment in Hammersmith" loading="eager">
+        <div class="hero-tag">
+          <span class="t1">Riverside Walk, W6</span>
+          <span class="t2">2 bed · let within 11 days</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap stats-row">
+      <div class="stat reveal">
+        <div class="num">7</div>
+        <div class="label">Properties under management</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">94.3%</div>
+        <div class="label">Average occupancy, trailing 12mo</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">17 days</div>
+        <div class="label">Median time-to-let</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">6.1%</div>
+        <div class="label">Average gross yield</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Portfolio</span>
+          <h2>A small, deliberately unhurried collection.</h2>
+        </div>
+        <p class="desc">We would rather manage seven homes properly than seventy homes badly. Each property is chosen within a twenty-minute cycle of Lyric Square.</p>
+      </div>
+      <div class="bento reveal">
+        <div class="bento-item tall">
+          <img src="https://picsum.photos/seed/lyric-riverside/700/900" alt="Riverside Walk apartment, Hammersmith">
+          <div class="bento-info">
+            <div class="loc">Hammersmith, W6</div>
+            <div class="name">Riverside Walk</div>
+            <div class="meta"><span>2 bed</span><span>Let</span></div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://picsum.photos/seed/lyric-broadway/600/450" alt="Broadway Court studio, Hammersmith">
+          <div class="bento-info">
+            <div class="loc">Hammersmith, W6</div>
+            <div class="name">Broadway Court</div>
+            <div class="meta"><span>Studio</span><span>Let</span></div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://picsum.photos/seed/lyric-fulham-palace/600/450" alt="Fulham Palace Road maisonette">
+          <div class="bento-info">
+            <div class="loc">Fulham, SW6</div>
+            <div class="name">Fulham Palace Maisonette</div>
+            <div class="meta"><span>3 bed</span><span>Let</span></div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://picsum.photos/seed/lyric-chiswick/600/450" alt="Chiswick Mall cottage">
+          <div class="bento-info">
+            <div class="loc">Chiswick, W4</div>
+            <div class="name">Mall Cottage</div>
+            <div class="meta"><span>1 bed</span><span>Available 12 Sept</span></div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://picsum.photos/seed/lyric-shepherds/600/450" alt="Shepherd's Bush conversion flat">
+          <div class="bento-info">
+            <div class="loc">Shepherd's Bush, W12</div>
+            <div class="name">Askew Road Conversion</div>
+            <div class="meta"><span>2 bed</span><span>Let</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Services</span>
+          <h2>What we take off an owner's plate.</h2>
+        </div>
+        <p class="desc">Four disciplines, run in-house rather than farmed out to whoever answers the phone first.</p>
+      </div>
+
+      <div class="service-row reveal">
+        <div class="service-copy">
+          <span class="service-index">01 · Sourcing</span>
+          <h3>Acquisition and due diligence</h3>
+          <p>We shortlist stock that meets our own letting criteria before an offer is ever made — not the other way round.</p>
+          <div class="service-list">
+            <div>Off-market and early-listing access across W6, W4 and SW6</div>
+            <div>Structural and lease-length checks before instruction</div>
+            <div>Realistic rent modelling, not agent optimism</div>
+          </div>
+        </div>
+        <div class="service-visual">
+          <img src="https://picsum.photos/seed/lyric-service-source/700/560" alt="Property viewing and due diligence">
+        </div>
+      </div>
+
+      <div class="service-row flip reveal">
+        <div class="service-copy">
+          <span class="service-index">02 · Management</span>
+          <h3>Day-to-day portfolio management</h3>
+          <p>Maintenance, safety compliance, contractor coordination and rent collection, handled without the owner needing to field a single call.</p>
+          <div class="service-list">
+            <div>Gas, electrical and EPC compliance tracked to renewal date</div>
+            <div>Vetted contractor bench for repairs under 48 hours</div>
+            <div>Monthly statements, not quarterly surprises</div>
+          </div>
+        </div>
+        <div class="service-visual">
+          <img src="https://picsum.photos/seed/lyric-service-manage/700/560" alt="Property maintenance and management">
+        </div>
+      </div>
+
+      <div class="service-row reveal">
+        <div class="service-copy">
+          <span class="service-index">03 · Lettings</span>
+          <h3>Tenant sourcing and relations</h3>
+          <p>Reference checks run properly, tenancies pitched at a rent that actually renews, and a single point of contact for the length of the let.</p>
+          <div class="service-list">
+            <div>Right-to-rent and credit referencing on every applicant</div>
+            <div>Renewal conversations start 90 days ahead of expiry</div>
+            <div>Direct line for tenants — no call centre queue</div>
+          </div>
+        </div>
+        <div class="service-visual">
+          <img src="https://picsum.photos/seed/lyric-service-let/700/560" alt="Tenant handover and keys">
+        </div>
+      </div>
+
+      <div class="service-row flip reveal">
+        <div class="service-copy">
+          <span class="service-index">04 · Reporting</span>
+          <h3>Compliance and owner reporting</h3>
+          <p>Records held to a standard that survives an audit, an insurer's query, or a call from HMRC — not just a landlord's memory.</p>
+          <div class="service-list">
+            <div>Digital records for every certificate and invoice</div>
+            <div>Annual portfolio review with yield and cost breakdown</div>
+            <div>Direct liaison with company secretary on statutory filings</div>
+          </div>
+        </div>
+        <div class="service-visual">
+          <img src="https://picsum.photos/seed/lyric-service-report/700/560" alt="Compliance documents and reporting">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="section" id="approach">
+    <div class="wrap approach">
+      <div class="approach-visual reveal">
+        <img src="https://picsum.photos/seed/lyric-approach-portrait/700/920" alt="Lyric Square Residences office at 1 Lyric Square, Hammersmith">
+      </div>
+      <div class="approach-copy reveal">
+        <span class="eyebrow">Approach</span>
+        <h2>Run like a hospitality floor, not a filing cabinet.</h2>
+        <p>Our principal built her career in food service, where a late delivery or a cold plate is never someone else's problem. We apply the same standard here: a leak reported at 9pm gets a contractor by morning, not a ticket number.</p>
+        <p>GG-001-726 Limited was incorporated in April 2024 to hold and operate this portfolio on a long-term basis. We are not flipping stock — every acquisition is underwritten to be held for at least a decade.</p>
+
+        <blockquote>
+          "We turned down two properties this year because the numbers only worked on optimistic assumptions. We would rather manage seven homes we believe in."
+          <footer>— Principal, Lyric Square Residences</footer>
+        </blockquote>
+
+        <div class="approach-grid">
+          <div class="card">
+            <h4>Held, not traded</h4>
+            <p>Every acquisition is modelled as a ten-year hold from day one.</p>
+          </div>
+          <div class="card">
+            <h4>Owner-operated</h4>
+            <p>No third-party letting agent sits between us and the tenant.</p>
+          </div>
+          <div class="card">
+            <h4>West London only</h4>
+            <p>We know these six postcodes better than a national portfolio ever could.</p>
+          </div>
+          <div class="card">
+            <h4>Statutory discipline</h4>
+            <p>Filings and compliance run to Companies House standard, always.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <span class="eyebrow" style="color:#cfe3d7;">Own a property nearby?</span>
+          <h2>Let's see if it fits the portfolio.</h2>
+          <p>We take on a small number of new instructions each year. A short call tells us both whether it's a match.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-primary">Start a conversation</a>
+          <a href="mailto:enquiries@lyricsquareresidences.co.uk" class="btn btn-ghost">Email directly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2>Send us the address, we'll do the rest.</h2>
+        </div>
+        <p class="desc">Whether you're an owner considering management or a prospective tenant, tell us a little and we'll come back within two working days.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <div class="row"><span>Registered office</span><span>1 Lyric Square, London, W6 0NB</span></div>
+          <div class="row"><span>Legal entity</span><span class="mono">GG-001-726 Limited</span></div>
+          <div class="row"><span>Company number</span><span class="mono">15609871</span></div>
+          <div class="row"><span>Incorporated</span><span>2 April 2024</span></div>
+          <div class="row"><span>Nature of business</span><span>SIC 68209 — Letting &amp; operating own property</span></div>
+          <div class="row"><span>Email</span><span>enquiries@lyricsquareresidences.co.uk</span></div>
+        </div>
+
+        <form id="enquiry-form" novalidate>
+          <div class="form-status" id="form-status">Thank you — your enquiry has been noted. We'll reply within two working days.</div>
+
+          <div class="field" id="field-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Janice Li" autocomplete="name">
+            <span class="hint">As it should appear on any correspondence.</span>
+            <span class="error-text">Please tell us your name.</span>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+            <span class="hint">We'll reply from enquiries@lyricsquareresidences.co.uk.</span>
+            <span class="error-text">Enter a valid email address.</span>
+          </div>
+
+          <div class="field" id="field-message">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Property address, or what you'd like to discuss"></textarea>
+            <span class="hint">The more detail, the faster we can respond.</span>
+            <span class="error-text">Let us know what you'd like to discuss.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">Send enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">LS</span>
+          Lyric Square Residences
+        </div>
+        <p>A residential letting and portfolio management company operating across Hammersmith, Fulham and Chiswick.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Site</h5>
+        <ul>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#approach">Approach</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:enquiries@lyricsquareresidences.co.uk">Email us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Registered</h5>
+        <ul>
+          <li>1 Lyric Square</li>
+          <li>London, W6 0NB</li>
+          <li>England &amp; Wales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>GG-001-726 Limited, registered in England &amp; Wales. Company No. <span class="mono">15609871</span>.</span>
+      <span>&copy; 2026 Lyric Square Residences. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle -> reveal inline links
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText = open ? '' : 'display:flex;flex-direction:column;gap:1rem;position:absolute;top:76px;left:0;right:0;background:var(--paper);padding:1.5rem clamp(1.25rem,4vw,3rem);border-bottom:1px solid var(--line);';
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 4) * 70 + 'ms';
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  // contact form validation + fake submit state
+  const form = document.getElementById('enquiry-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const nameField = document.getElementById('field-name');
+    const nameInput = document.getElementById('name');
+    nameField.classList.toggle('error', nameInput.value.trim().length === 0);
+    if (nameInput.value.trim().length === 0) valid = false;
+
+    const emailField = document.getElementById('field-email');
+    const emailInput = document.getElementById('email');
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+    emailField.classList.toggle('error', !emailOk);
+    if (!emailOk) valid = false;
+
+    const msgField = document.getElementById('field-message');
+    const msgInput = document.getElementById('message');
+    msgField.classList.toggle('error', msgInput.value.trim().length === 0);
+    if (msgInput.value.trim().length === 0) valid = false;
+
+    if (valid) {
+      status.classList.add('show');
+      form.reset();
+      [nameField, emailField, msgField].forEach(f => f.classList.remove('error'));
+    } else {
+      status.classList.remove('show');
+    }
+  });
+</script>
+
+</body>
+</html>
