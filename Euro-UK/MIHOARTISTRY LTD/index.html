@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIHOARTISTRY LTD | Art, Design & Brand Storytelling</title>
+    <meta
+      name="description"
+      content="MIHOARTISTRY LTD is a London-based private company creating elevated art, design, and brand experiences for modern audiences."
+    />
+    <style>
+      :root {
+        --bg: #f6f2ec;
+        --paper: #fffdf9;
+        --panel: #f1e9df;
+        --ink: #181513;
+        --muted: #5f564f;
+        --line: rgba(24, 21, 19, 0.12);
+        --gold: #c8a46a;
+        --gold-soft: #edd9b2;
+        --sage: #8ca497;
+        --terracotta: #b87c5b;
+        --shadow: 0 20px 60px rgba(24, 21, 19, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, calc(100vw - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(246, 242, 236, 0.78);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--ink), #3d3631);
+        color: white;
+        font-size: 0.88rem;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+      }
+
+      .brand-name {
+        font-size: 0.86rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .nav {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .nav a {
+        position: relative;
+      }
+
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 100%;
+        height: 1px;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+
+      .nav a:hover::after,
+      .nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .nav-cta {
+        background: var(--ink);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 25px rgba(24, 21, 19, 0.18);
+      }
+
+      .hero {
+        padding: 72px 0 32px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 42px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.38);
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 20px 0 18px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(3.2rem, 6vw, 7rem);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        font-weight: 600;
+      }
+
+      .lede {
+        font-size: 1.15rem;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 24px;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .button.primary {
+        background: var(--ink);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .button.secondary {
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.4);
+        color: var(--ink);
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        margin-top: 30px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .meta-pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.45);
+        border: 1px solid var(--line);
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--sage);
+        box-shadow: 0 0 0 5px rgba(140, 164, 151, 0.17);
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 660px;
+      }
+
+      .panel-card {
+        position: absolute;
+        background: linear-gradient(135deg, rgba(255,255,255,0.78), rgba(241,233,223,0.9));
+        border: 1px solid rgba(24,21,19,0.08);
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .card-main {
+        top: 40px;
+        left: 20px;
+        right: 60px;
+        bottom: 60px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-main .label {
+        display: inline-block;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+
+      .art-block {
+        flex: 1;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 25% 30%, rgba(255,255,255,0.8), transparent 30%),
+          linear-gradient(135deg, rgba(200,164,106,0.55), rgba(184,124,91,0.28), rgba(140,164,151,0.6));
+        border: 1px solid rgba(24,21,19,0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .art-block::before,
+      .art-block::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.8;
+      }
+
+      .art-block::before {
+        width: 300px;
+        height: 300px;
+        right: -80px;
+        top: -72px;
+        background: rgba(255,255,255,0.2);
+      }
+
+      .art-block::after {
+        width: 210px;
+        height: 210px;
+        left: -40px;
+        bottom: -60px;
+        background: rgba(24,21,19,0.12);
+      }
+
+      .floating-note {
+        position: absolute;
+        right: 0;
+        bottom: 20px;
+        min-width: 210px;
+        padding: 18px 20px;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .floating-note strong {
+        display: block;
+        font-size: 1.8rem;
+        font-family: Georgia, serif;
+        letter-spacing: -0.04em;
+      }
+
+      .floating-note span {
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--ink);
+        color: white;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 10px 12px;
+        border-radius: 0 26px 0 18px;
+      }
+
+      .stats {
+        padding: 20px 0 40px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .stat {
+        background: rgba(255,255,255,0.42);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px 22px;
+      }
+
+      .stat strong {
+        display: block;
+        font-family: Georgia, serif;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        letter-spacing: -0.06em;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 26px;
+      }
+
+      .eyebrow-alt {
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 8px 0 0;
+        font-family: Georgia, serif;
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        line-height: 1.04;
+        letter-spacing: -0.06em;
+      }
+
+      .section-copy {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .story-layout {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .story-box {
+        background: rgba(255,255,255,0.42);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        padding: 30px;
+      }
+
+      .story-box p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .story-box p:last-child { margin-bottom: 0; }
+
+      .quote {
+        background: linear-gradient(135deg, rgba(200,164,106,0.24), rgba(255,255,255,0.3));
+      }
+
+      .quote blockquote {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: clamp(1.8rem, 2.5vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.05em;
+      }
+
+      .quote footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .service-card {
+        background: rgba(255,255,255,0.44);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 24px;
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-index {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(200,164,106,0.18);
+        color: var(--ink);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .service-card h3 {
+        margin: 18px 0 12px;
+        font-size: 1.55rem;
+        letter-spacing: -0.04em;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+        flex: 1;
+      }
+
+      .service-points {
+        list-style: none;
+        padding: 0;
+        margin: 18px 0 0;
+        display: grid;
+        gap: 8px;
+        color: var(--ink);
+        font-size: 0.92rem;
+      }
+
+      .service-points li::before {
+        content: "•";
+        color: var(--gold);
+        margin-right: 10px;
+      }
+
+      .values-wrap {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .value-card {
+        padding: 22px 18px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.54), rgba(241,233,223,0.72));
+        border: 1px solid var(--line);
+      }
+
+      .value-number {
+        color: var(--gold);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .value-card h3 {
+        margin: 12px 0 10px;
+        font-size: 1.38rem;
+        letter-spacing: -0.04em;
+      }
+
+      .value-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .process {
+        background: rgba(255,255,255,0.28);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .step {
+        background: rgba(255,255,255,0.42);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px 20px;
+      }
+
+      .step-number {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .step h3 {
+        margin: 18px 0 12px;
+        font-size: 1.5rem;
+        letter-spacing: -0.04em;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .showcase {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+      }
+
+      .showcase-card {
+        background: rgba(255,255,255,0.44);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        padding: 28px;
+      }
+
+      .showcase-visual {
+        min-height: 380px;
+        border-radius: 26px;
+        background:
+          linear-gradient(135deg, rgba(24,21,19,0.9), rgba(24,21,19,0.55)),
+          linear-gradient(120deg, rgba(200,164,106,0.7), rgba(140,164,151,0.48));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .showcase-visual::before,
+      .showcase-visual::after {
+        content: "";
+        position: absolute;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .showcase-visual::before {
+        width: 190px;
+        height: 250px;
+        left: 28px;
+        bottom: 32px;
+        transform: rotate(-12deg);
+      }
+
+      .showcase-visual::after {
+        width: 160px;
+        height: 220px;
+        right: 34px;
+        top: 52px;
+        transform: rotate(12deg);
+      }
+
+      .showcase-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .showcase-copy p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .checklist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+        color: var(--ink);
+      }
+
+      .checklist li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .checklist li::before {
+        content: "✓";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 50%;
+        background: rgba(140,164,151,0.18);
+        color: var(--ink);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .founder-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 24px;
+      }
+
+      .portrait {
+        min-height: 470px;
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), transparent 18%),
+          linear-gradient(135deg, rgba(200,164,106,0.38), rgba(140,164,151,0.32), rgba(24,21,19,0.16));
+        border: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .portrait::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 54%;
+        width: 190px;
+        height: 190px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: rgba(255,255,255,0.22);
+      }
+
+      .portrait::after {
+        content: "J L";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Georgia, serif;
+        font-size: 4rem;
+        letter-spacing: -0.07em;
+      }
+
+      .bio {
+        background: rgba(255,255,255,0.42);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        padding: 30px;
+      }
+
+      .bio p {
+        color: var(--muted);
+      }
+
+      .details-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 22px;
+      }
+
+      .details-item {
+        padding: 18px 16px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.42);
+        border: 1px solid var(--line);
+      }
+
+      .details-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .details-item strong {
+        display: block;
+        font-size: 1.05rem;
+      }
+
+      .companies {
+        padding-top: 26px;
+        padding-bottom: 70px;
+      }
+
+      .company-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .company-card {
+        background: rgba(255,255,255,0.42);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 22px 20px;
+      }
+
+      .company-card small {
+        display: block;
+        color: var(--muted);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .company-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+        letter-spacing: -0.04em;
+      }
+
+      .company-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .cta {
+        padding-top: 20px;
+        padding-bottom: 90px;
+      }
+
+      .cta-panel {
+        border-radius: 34px;
+        background: linear-gradient(135deg, rgba(24,21,19,0.98), rgba(39,33,28,0.92));
+        color: #f7f3ee;
+        padding: 52px 42px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: center;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-panel h2 {
+        margin: 0;
+        color: white;
+      }
+
+      .cta-panel p {
+        margin: 12px 0 0;
+        color: rgba(255,255,255,0.72);
+      }
+
+      .cta-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .cta .button.secondary {
+        border-color: rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        color: white;
+      }
+
+      footer {
+        padding: 0 0 42px;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .story-layout,
+        .showcase,
+        .founder-grid,
+        .cta-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid,
+        .services-grid,
+        .values-wrap,
+        .process-grid,
+        .company-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .hero-visual {
+          min-height: 500px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero {
+          padding-top: 52px;
+        }
+
+        h1 {
+          font-size: 3.1rem;
+        }
+
+        .stats-grid,
+        .services-grid,
+        .values-wrap,
+        .process-grid,
+        .company-grid,
+        .details-list {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-panel {
+          padding: 38px 24px;
+        }
+
+        .topbar-inner {
+          min-height: 68px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand" aria-label="MIHOARTISTRY LTD brand">
+          <div class="brand-mark">M</div>
+          <div class="brand-name">MIHOARTISTRY LTD</div>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#approach">Approach</a>
+          <a href="#founder">Founder</a>
+          <a href="#contact" class="nav-cta">Book a consult</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Established in London • 2024</div>
+            <h1>Artful thinking for brands that want to feel rare.</h1>
+            <p class="lede">
+              MIHOARTISTRY LTD is a modern British company shaped by creativity, culture,
+              and thoughtful design. From strategic identity work to expressive visual
+              experiences, we help ideas become magnetic, memorable, and market-ready.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button primary" href="#contact">Start your project</a>
+              <a class="button secondary" href="#services">Explore services</a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-pill"><span class="dot"></span> London registered</div>
+              <div class="meta-pill"><span class="dot"></span> Private limited company</div>
+              <div class="meta-pill"><span class="dot"></span> Director-led</div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="MIHOARTISTRY brand visual concept">
+            <div class="panel-card card-main">
+              <div>
+                <span class="label">Creative studio</span>
+                <div class="art-block"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:18px; margin-top:18px;">
+                <div>
+                  <div style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">Brand identity</div>
+                  <div style="font-family:Georgia,serif; font-size:2rem; letter-spacing:-0.05em; margin-top:8px;">MIHO</div>
+                </div>
+                <div style="font-size:0.85rem; color:var(--muted);">Curated for modern culture</div>
+              </div>
+            </div>
+            <div class="floating-note">
+              <strong>01</strong>
+              <span>Design direction</span>
+            </div>
+            <div class="badge">London</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Company statistics and profile">
+        <div class="container stats-grid">
+          <div class="stat">
+            <strong>2024</strong>
+            <span>Founded</span>
+          </div>
+          <div class="stat">
+            <strong>UK</strong>
+            <span>Registered office</span>
+          </div>
+          <div class="stat">
+            <strong>Ltd</strong>
+            <span>Company structure</span>
+          </div>
+          <div class="stat">
+            <strong>1</strong>
+            <span>Shareholder</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">About MIHOARTISTRY</div>
+              <h2>Built on clarity, culture, and craft.</h2>
+            </div>
+            <p class="section-copy">
+              Our work lives at the crossroads of storytelling and strategy: helping brands,
+              founders, and creative businesses articulate what they stand for and present it with elegance.
+            </p>
+          </div>
+
+          <div class="story-layout">
+            <div class="story-box">
+              <p>
+                MIHOARTISTRY LTD is a newly formed private company incorporated in England and Wales,
+                with registered office details in London and a single-shareholder structure led by Jinghan Lyu.
+                The business reflects a distinct creative direction grounded in professionalism, trust, and rising cultural relevance.
+              </p>
+              <p>
+                At its core, the company embodies a modern artistic identity: purposeful, premium, and audience-aware.
+                This foundation supports a wide range of client needs, from visual identity and positioning to brand storytelling,
+                creative direction, and market-facing presentation.
+              </p>
+            </div>
+
+            <div class="story-box quote">
+              <blockquote>
+                “We believe beauty should be intentional, not ornamental — a business asset, a cultural signal, and a clear story.”
+              </blockquote>
+              <footer>MIHOARTISTRY LTD</footer>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">What we do</div>
+              <h2>Creative services designed for modern growth.</h2>
+            </div>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-index">01</div>
+              <h3>Brand identity</h3>
+              <p>
+                Distinctive visual systems that help businesses express their value with clarity and confidence.
+              </p>
+              <ul class="service-points">
+                <li>Brand strategy</li>
+                <li>Logo direction</li>
+                <li>Visual language</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="service-index">02</div>
+              <h3>Art direction</h3>
+              <p>
+                Cohesive creative concepts that give campaigns, launches, and collections a refined voice.
+              </p>
+              <ul class="service-points">
+                <li>Campaign concepts</li>
+                <li>Lookbook styling</li>
+                <li>Creative planning</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="service-index">03</div>
+              <h3>Content storytelling</h3>
+              <p>
+                Narrative-led presentations that make brands feel compelling, relevant, and easy to trust.
+              </p>
+              <ul class="service-points">
+                <li>Website direction</li>
+                <li>Launch messaging</li>
+                <li>Commercial storytelling</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">Principles</div>
+              <h2>Minimalism with emotional depth.</h2>
+            </div>
+          </div>
+
+          <div class="values-wrap">
+            <div class="value-card">
+              <div class="value-number">01</div>
+              <h3>Intentional</h3>
+              <p>Every visual decision has a purpose and supports the brand’s wider story.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-number">02</div>
+              <h3>Refined</h3>
+              <p>Understated design that feels premium without losing warmth or personality.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-number">03</div>
+              <h3>Human</h3>
+              <p>We build experiences that resonate emotionally, not just aesthetically.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-number">04</div>
+              <h3>Commercial</h3>
+              <p>Creative direction that supports ambition, visibility, and sustainable growth.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="approach" class="process">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">Approach</div>
+              <h2>From vision to visual presence.</h2>
+            </div>
+          </div>
+
+          <div class="process-grid">
+            <div class="step">
+              <div class="step-number">Step 01</div>
+              <h3>Listen</h3>
+              <p>We define the business context, audience, and cultural setting before shaping the creative response.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">Step 02</div>
+              <h3>Frame</h3>
+              <p>We translate goals into a coherent creative narrative and a refined visual direction.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">Step 03</div>
+              <h3>Design</h3>
+              <p>We build a polished concept that balances originality, elegance, and clarity.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">Step 04</div>
+              <h3>Deliver</h3>
+              <p>We package the work for real-world use across digital, commercial, and brand touchpoints.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">What makes us different</div>
+              <h2>Thoughtful creative systems built to stand out.</h2>
+            </div>
+          </div>
+
+          <div class="showcase">
+            <div class="showcase-card showcase-visual" aria-label="Brand showcase illustration"></div>
+            <div class="showcase-card showcase-copy">
+              <div>
+                <div class="eyebrow-alt">Why clients choose us</div>
+                <h3 style="margin:12px 0 0; font-size:2rem; letter-spacing:-0.05em;">Strategy meets aesthetic clarity.</h3>
+              </div>
+              <p>
+                We do more than design visuals. We shape positioning, refine identity, and build a visual language that helps a business feel cohesive from first impression to final conversion.
+              </p>
+              <ul class="checklist">
+                <li>Clear positioning that differentiates the brand in a crowded market.</li>
+                <li>Premium design language that signals trust, quality, and ambition.</li>
+                <li>Flexible creative systems for launches, campaigns, and strategic growth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="founder">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">Founder story</div>
+              <h2>Visionary leadership with a long-view lens.</h2>
+            </div>
+          </div>
+
+          <div class="founder-grid">
+            <div class="portrait" aria-label="Portrait placeholder for founder Jinghan Lyu"></div>
+
+            <div class="bio">
+              <p>
+                MIHOARTISTRY LTD is led by Jinghan Lyu, the company director and the principal controlling individual
+                behind the business. The company is structured as a private limited company with legal registration in England and Wales,
+                reflecting a formal foundation for a growth-minded creative enterprise.
+              </p>
+              <p>
+                The founder’s approach combines business discipline with artistic instinct, building a company with a strong sense of market readiness,
+                design excellence, and commercial confidence. In an increasingly saturated visual landscape, MIHOARTISTRY brings clarity,
+                intention, and a premium point of view.
+              </p>
+
+              <div class="details-list">
+                <div class="details-item">
+                  <span>Director</span>
+                  <strong>Jinghan Lyu</strong>
+                </div>
+                <div class="details-item">
+                  <span>Reg. no.</span>
+                  <strong>15610161</strong>
+                </div>
+                <div class="details-item">
+                  <span>Company type</span>
+                  <strong>Private limited by shares</strong>
+                </div>
+                <div class="details-item">
+                  <span>Office</span>
+                  <strong>London, United Kingdom</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="companies">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow-alt">Business profile</div>
+              <h2>Established in a modern UK business context.</h2>
+            </div>
+          </div>
+
+          <div class="company-grid">
+            <div class="company-card">
+              <small>Registration</small>
+              <h3>Incorporated</h3>
+              <p>MIHOARTISTRY LTD was incorporated under the Companies Act 2006 in England and Wales as a private company limited by shares.</p>
+            </div>
+            <div class="company-card">
+              <small>Location</small>
+              <h3>London base</h3>
+              <p>The company’s registered office is based in Greater London, reflecting an international and commercially savvy UK presence.</p>
+            </div>
+            <div class="company-card">
+              <small>Purpose</small>
+              <h3>Creative enterprise</h3>
+              <p>Positioned for art-led brand work, identity development, culture-focused storytelling, and premium visual strategy.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="contact">
+        <div class="container">
+          <div class="cta-panel">
+            <div>
+              <div class="eyebrow-alt" style="color: rgba(255,255,255,0.7);">Let’s build something memorable</div>
+              <h2>Bring your vision into focus.</h2>
+              <p>
+                MIHOARTISTRY LTD is ready to help founders, brands, and cultural businesses turn ideas into polished, distinctive experiences.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a class="button primary" href="mailto:hello@mihoartistry.com">hello@mihoartistry.com</a>
+              <a class="button secondary" href="tel:+440000000000">+44 (0)20 0000 0000</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2024 MIHOARTISTRY LTD</div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#approach">Approach</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
