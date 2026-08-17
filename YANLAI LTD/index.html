@@ -1,1 +1,604 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YANLAI — Fine Watches & Jewellery, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+  :root{
+    --bg: #0B0B0C;
+    --bg-raised: #131315;
+    --ink: #F3F1EA;
+    --ink-soft: #A6A29A;
+    --line: rgba(243,241,234,0.12);
+    --line-soft: rgba(243,241,234,0.06);
+    --gold: #C9A461;
+    --gold-bright: #E4C68A;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-weight:300;
+    line-height:1.7; -webkit-font-smoothing: antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{ background: var(--gold); color: #0B0B0C; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  .wrap{ max-width: 1400px; margin:0 auto; padding: 0 40px; }
+
+  /* film grain */
+  .grain{
+    position: fixed; inset:0; z-index:80; pointer-events:none; opacity:0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- top bar: centered logo, minimal ---------- */
+  header{
+    position: fixed; top:0; left:0; right:0; z-index:50;
+    padding: 26px 0;
+    transition: background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  header.scrolled{
+    background: rgba(11,11,12,0.86); backdrop-filter: blur(16px);
+    padding: 16px 0; border-color: var(--line);
+  }
+  nav{
+    display:grid; grid-template-columns: 1fr auto 1fr; align-items:center;
+    max-width: 1400px; margin:0 auto; padding: 0 40px;
+  }
+  .navlinks{ display:flex; gap: 34px; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+  .navlinks a{ transition: color .25s ease; position:relative; }
+  .navlinks a:hover{ color: var(--gold-bright); }
+  .brand{
+    font-family: var(--serif); font-size: 26px; letter-spacing: 0.28em; text-align:center;
+    color: var(--ink); font-weight: 400;
+  }
+  .nav-right{ display:flex; justify-content:flex-end; }
+  .nav-cta{
+    font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--gold); color: var(--gold-bright); padding: 11px 22px;
+    transition: background .25s ease, color .25s ease;
+  }
+  .nav-cta:hover{ background: var(--gold); color: #0B0B0C; }
+
+  /* ---------- hero: full bleed image, centered overlay type ---------- */
+  .hero{
+    position: relative; min-height: 100dvh; display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden;
+  }
+  .hero-bg{ position:absolute; inset:0; z-index:0; }
+  .hero-bg img{ width:100%; height:100%; object-fit:cover; filter: grayscale(0.3) brightness(0.55) contrast(1.1); }
+  .hero-bg::after{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(11,11,12,0.5) 0%, rgba(11,11,12,0.35) 40%, rgba(11,11,12,0.95) 100%);
+  }
+  .hero-inner{ position:relative; z-index:2; max-width: 760px; padding: 0 24px; }
+  .hero-kicker{
+    font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-bright);
+    margin-bottom: 28px; display:flex; align-items:center; justify-content:center; gap: 14px;
+  }
+  .hero-kicker::before, .hero-kicker::after{ content:''; width: 32px; height:1px; background: var(--gold); }
+  h1.hero-h{
+    font-family: var(--serif); font-weight: 400; font-style: italic;
+    font-size: clamp(46px, 8vw, 96px); line-height: 1.02; letter-spacing: -0.01em;
+    margin-bottom: 30px;
+  }
+  .hero-sub{ font-size: 16px; color: var(--ink-soft); max-width: 46ch; margin: 0 auto 44px; font-weight:300; }
+  .hero-actions{ display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+  .btn-gold{
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--gold); color: #0B0B0C; padding: 17px 34px;
+    display:inline-flex; align-items:center; gap:10px; transition: background .25s ease, transform .15s ease;
+  }
+  .btn-gold:hover{ background: var(--gold-bright); }
+  .btn-gold:active{ transform: scale(0.97); }
+  .btn-line{
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1px solid var(--line); color: var(--ink); padding: 17px 30px;
+    display:inline-flex; align-items:center; gap:10px; transition: border-color .25s ease;
+  }
+  .btn-line:hover{ border-color: var(--gold); color: var(--gold-bright); }
+
+  .scroll-cue{
+    position:absolute; bottom: 40px; left:50%; transform: translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap: 10px;
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .scroll-cue .line{ width:1px; height: 40px; background: linear-gradient(180deg, var(--gold), transparent); animation: scrollpulse 2s ease-in-out infinite; }
+  @keyframes scrollpulse{ 0%,100%{ opacity:0.3; } 50%{ opacity:1; } }
+
+  /* ---------- ticker ---------- */
+  .ticker{
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: var(--bg-raised); overflow:hidden; padding: 20px 0; position: relative; z-index:1;
+  }
+  .ticker-track{ display:flex; width:max-content; animation: tick 40s linear infinite; }
+  .ticker-track span{
+    font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-soft);
+    padding: 0 44px; display:flex; align-items:center; gap: 16px; white-space:nowrap;
+  }
+  .ticker-track span i{ color: var(--gold); font-size: 8px; }
+  @keyframes tick{ from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
+
+  section{ position:relative; z-index:1; }
+  .section-pad{ padding: 140px 40px; }
+
+  .kicker{
+    font-size: 11.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 22px; display:block;
+  }
+  h2.section-h{
+    font-family: var(--serif); font-weight:400; font-style: italic;
+    font-size: clamp(34px, 4.4vw, 54px); letter-spacing: -0.01em; line-height: 1.06;
+  }
+
+  /* ---------- collections: horizontal scroll gallery ---------- */
+  .coll-head{ display:flex; justify-content:space-between; align-items:flex-end; gap: 40px; margin-bottom: 60px; flex-wrap:wrap; }
+  .coll-head p{ color: var(--ink-soft); font-size: 15px; max-width: 40ch; }
+  .h-scroll{
+    display:flex; gap: 24px; overflow-x:auto; padding-bottom: 20px; scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+  }
+  .h-scroll::-webkit-scrollbar{ height: 4px; }
+  .h-scroll::-webkit-scrollbar-thumb{ background: var(--gold); }
+  .h-scroll::-webkit-scrollbar-track{ background: var(--line-soft); }
+  .coll-card{
+    flex: 0 0 340px; position:relative; border-radius: 2px; overflow:hidden;
+    aspect-ratio: 3/4; background: var(--bg-raised);
+  }
+  .coll-card img{ width:100%; height:100%; object-fit:cover; filter: grayscale(0.25) brightness(0.75) contrast(1.05); transition: transform .6s cubic-bezier(.16,1,.3,1), filter .4s ease; }
+  .coll-card:hover img{ transform: scale(1.06); filter: grayscale(0.05) brightness(0.85) contrast(1.1); }
+  .coll-card::after{
+    content:''; position:absolute; inset:0; background: linear-gradient(0deg, rgba(11,11,12,0.85), transparent 55%);
+  }
+  .coll-label{
+    position:absolute; bottom: 26px; left: 26px; right: 26px; z-index:2;
+  }
+  .coll-label .cat{ font-size: 10.5px; letter-spacing: 0.16em; text-transform:uppercase; color: var(--gold-bright); margin-bottom: 8px; }
+  .coll-label h3{ font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 26px; margin-bottom: 4px; }
+  .coll-label .price{ font-size: 13px; color: var(--ink-soft); }
+
+  /* ---------- the difference: numbered split ---------- */
+  .diff-alt{ background: var(--bg-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .diff-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; }
+  .diff-num-list{ display:flex; flex-direction:column; }
+  .diff-item{ display:grid; grid-template-columns: 60px 1fr; gap: 24px; padding: 34px 0; border-bottom: 1px solid var(--line); }
+  .diff-item:first-child{ padding-top: 0; }
+  .diff-item .n{ font-family: var(--serif); font-style: italic; font-size: 34px; color: var(--gold); }
+  .diff-item h4{ font-size: 17px; font-weight: 500; margin-bottom: 10px; letter-spacing: 0.01em; }
+  .diff-item p{ color: var(--ink-soft); font-size: 14.5px; max-width: 46ch; }
+  .diff-visual{ position: relative; border-radius: 2px; overflow: hidden; }
+  .diff-visual img{ width:100%; height:100%; object-fit:cover; filter: grayscale(0.3) brightness(0.7); }
+
+  /* ---------- spotlight product ---------- */
+  .spotlight{ display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items:center; }
+  .spot-visual{ position:relative; aspect-ratio: 4/5; border-radius: 2px; overflow:hidden; }
+  .spot-visual img{ width:100%; height:100%; object-fit:cover; filter: grayscale(0.2) brightness(0.8) contrast(1.05); }
+  .spot-copy .kicker{ margin-bottom: 22px; }
+  .spot-copy p.desc{ color: var(--ink-soft); font-size: 15.5px; max-width: 48ch; margin: 26px 0 36px; }
+  .spec-list{ display:flex; flex-direction:column; gap: 0; margin-bottom: 40px; }
+  .spec-row{ display:flex; justify-content:space-between; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .spec-row span:first-child{ color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11.5px; }
+  .spec-row span:last-child{ color: var(--ink); }
+
+  /* ---------- craftsmanship timeline ---------- */
+  .craft-alt{ background: var(--bg-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .timeline{ position: relative; padding-left: 50px; }
+  .timeline::before{ content:''; position:absolute; left: 8px; top: 6px; bottom: 6px; width:1px; background: var(--line); }
+  .t-step{ position:relative; padding-bottom: 60px; }
+  .t-step:last-child{ padding-bottom: 0; }
+  .t-step::before{
+    content:''; position:absolute; left: -50px; top: 4px; width: 17px; height:17px; border-radius:50%;
+    border: 1px solid var(--gold); background: var(--bg-raised);
+  }
+  .t-step .t-label{ font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .t-step h3{ font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 28px; margin-bottom: 12px; }
+  .t-step p{ color: var(--ink-soft); font-size: 14.5px; max-width: 60ch; }
+
+  /* ---------- testimonial marquee quotes ---------- */
+  .quote-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .quote-card{ background: var(--bg); padding: 44px 36px; display:flex; flex-direction:column; }
+  .quote-card .qmark{ font-family: var(--serif); font-style: italic; font-size: 52px; color: var(--gold); line-height:1; margin-bottom: 14px; }
+  .quote-card p.q{ font-size: 15px; color: var(--ink); margin-bottom: 26px; flex:1; line-height:1.7; }
+  .quote-person{ padding-top: 18px; border-top: 1px solid var(--line-soft); }
+  .quote-person .name{ font-size: 13.5px; font-weight: 500; }
+  .quote-person .loc{ font-size: 12px; color: var(--ink-soft); }
+
+  /* ---------- appointment / contact ---------- */
+  .appt-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .appt-info .info-row{ display:flex; gap:18px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .appt-info .ic{ width:36px; height:36px; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; color: var(--gold-bright); flex-shrink:0; font-size:15px; }
+  .appt-info .tt{ font-size: 14px; font-weight:500; margin-bottom:3px; letter-spacing: 0.01em; }
+  .appt-info .dd{ font-size: 13px; color: var(--ink-soft); }
+
+  form.appt-form{ display:flex; flex-direction:column; gap: 24px; }
+  .f-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .f-field{ display:flex; flex-direction:column; gap: 10px; }
+  .f-field label{ font-size: 11px; letter-spacing: 0.12em; text-transform:uppercase; color: var(--ink-soft); }
+  .f-field input, .f-field select, .f-field textarea{
+    background: transparent; border: none; border-bottom: 1px solid var(--line);
+    color: var(--ink); font-family: var(--sans); font-size: 14.5px; padding: 10px 2px;
+    transition: border-color .25s ease;
+  }
+  .f-field input:focus, .f-field select:focus, .f-field textarea:focus{ outline:none; border-color: var(--gold); }
+  .f-field textarea{ resize: vertical; min-height: 90px; }
+  .appt-form .btn-gold{ align-self: flex-start; margin-top: 10px; border:none; cursor:pointer; }
+
+  /* ---------- footer ---------- */
+  footer{ border-top: 1px solid var(--line); background: var(--bg-raised); }
+  .foot-top{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 60px; padding: 90px 40px 70px; }
+  .foot-brand .brand-mark{ font-family: var(--serif); font-size: 24px; letter-spacing: 0.24em; margin-bottom: 20px; }
+  .foot-brand p{ font-size: 13.5px; color: var(--ink-soft); max-width: 34ch; }
+  .foot-col h4{ font-size: 11px; text-transform:uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 22px; }
+  .foot-col a{ display:block; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; transition: color .2s; }
+  .foot-col a:hover{ color: var(--gold-bright); }
+  .foot-bottom{
+    border-top: 1px solid var(--line); padding: 26px 40px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 12px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .foot-bottom p{ font-size: 11.5px; color: var(--ink-soft); letter-spacing: 0.03em; }
+
+  @media (max-width: 980px){
+    .navlinks{ display:none; }
+    nav{ grid-template-columns: 1fr auto; }
+    .nav-right{ display:none; }
+    .diff-grid{ grid-template-columns: 1fr; }
+    .diff-visual{ aspect-ratio: 16/9; order:-1; }
+    .spotlight{ grid-template-columns: 1fr; }
+    .coll-head{ align-items:flex-start; }
+    .quote-grid{ grid-template-columns: 1fr; }
+    .appt-grid{ grid-template-columns: 1fr; gap: 50px; }
+    .f-row{ grid-template-columns: 1fr; }
+    .foot-top{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px){
+    .wrap, .section-pad{ padding-left: 22px; padding-right: 22px; }
+    .coll-card{ flex: 0 0 260px; }
+    .foot-top{ grid-template-columns: 1fr; padding: 70px 22px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header id="siteHeader">
+  <nav>
+    <div class="navlinks">
+      <a href="#collections">Collections</a>
+      <a href="#difference">The Difference</a>
+      <a href="#craft">Craftsmanship</a>
+    </div>
+    <div class="brand">YANLAI</div>
+    <div class="nav-right">
+      <a href="#appointment" class="nav-cta">Book Viewing</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://picsum.photos/seed/yanlaiwatchhero/1800/1200" alt="Fine watch and jewellery display" />
+  </div>
+  <div class="hero-inner reveal">
+    <div class="hero-kicker">Est. London, 2024</div>
+    <h1 class="hero-h">Pieces chosen<br/>with restraint.</h1>
+    <p class="hero-sub">YANLAI is a private dealer of fine watches and jewellery in Canary Wharf, London — sourcing a small, considered selection rather than a large one.</p>
+    <div class="hero-actions">
+      <a href="#appointment" class="btn-gold">Book a private viewing <i class="ph-bold ph-arrow-up-right"></i></a>
+      <a href="#collections" class="btn-line">Browse the collection</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span><i class="ph-fill ph-diamond"></i>Fine Watches</span>
+    <span><i class="ph-fill ph-diamond"></i>Vintage & Pre-Owned</span>
+    <span><i class="ph-fill ph-diamond"></i>Bespoke Jewellery</span>
+    <span><i class="ph-fill ph-diamond"></i>Authentication Included</span>
+    <span><i class="ph-fill ph-diamond"></i>By Private Appointment</span>
+    <span><i class="ph-fill ph-diamond"></i>Canary Wharf, London</span>
+    <span><i class="ph-fill ph-diamond"></i>Fine Watches</span>
+    <span><i class="ph-fill ph-diamond"></i>Vintage & Pre-Owned</span>
+    <span><i class="ph-fill ph-diamond"></i>Bespoke Jewellery</span>
+    <span><i class="ph-fill ph-diamond"></i>Authentication Included</span>
+    <span><i class="ph-fill ph-diamond"></i>By Private Appointment</span>
+    <span><i class="ph-fill ph-diamond"></i>Canary Wharf, London</span>
+  </div>
+</div>
+
+<section class="section-pad" id="collections">
+  <div class="wrap">
+    <div class="coll-head reveal">
+      <div>
+        <span class="kicker">The Collection</span>
+        <h2 class="section-h">Currently held.</h2>
+      </div>
+      <p>A rotating selection of watches and jewellery, sourced individually and available to view by appointment only.</p>
+    </div>
+    <div class="h-scroll reveal">
+      <div class="coll-card">
+        <img src="https://picsum.photos/seed/yanlaiwatch1/500/700" alt="Vintage dress watch" />
+        <div class="coll-label">
+          <div class="cat">Timepiece</div>
+          <h3>Vintage Dress Watch</h3>
+          <div class="price">Steel, manual wind — POA</div>
+        </div>
+      </div>
+      <div class="coll-card">
+        <img src="https://picsum.photos/seed/yanlaijewel1/500/700" alt="Diamond eternity ring" />
+        <div class="coll-label">
+          <div class="cat">Jewellery</div>
+          <h3>Eternity Ring</h3>
+          <div class="price">18ct gold, diamond — POA</div>
+        </div>
+      </div>
+      <div class="coll-card">
+        <img src="https://picsum.photos/seed/yanlaiwatch2/500/700" alt="Chronograph watch" />
+        <div class="coll-label">
+          <div class="cat">Timepiece</div>
+          <h3>Steel Chronograph</h3>
+          <div class="price">Automatic movement — POA</div>
+        </div>
+      </div>
+      <div class="coll-card">
+        <img src="https://picsum.photos/seed/yanlaijewel2/500/700" alt="Sapphire pendant necklace" />
+        <div class="coll-label">
+          <div class="cat">Jewellery</div>
+          <h3>Sapphire Pendant</h3>
+          <div class="price">Platinum setting — POA</div>
+        </div>
+      </div>
+      <div class="coll-card">
+        <img src="https://picsum.photos/seed/yanlaiwatch3/500/700" alt="Ladies gold watch" />
+        <div class="coll-label">
+          <div class="cat">Timepiece</div>
+          <h3>Ladies Gold Watch</h3>
+          <div class="price">18ct case, quartz — POA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diff-alt" id="difference">
+  <div class="section-pad wrap">
+    <div class="diff-grid">
+      <div class="reveal">
+        <span class="kicker">The Difference</span>
+        <h2 class="section-h" style="margin-bottom:16px;">Why buy through a dealer.</h2>
+        <p style="color:var(--ink-soft); font-size:15px; max-width:44ch;">Every piece is sourced, authenticated, and priced by one person — not a marketplace algorithm.</p>
+        <div class="diff-num-list" style="margin-top:44px;">
+          <div class="diff-item">
+            <div class="n">01</div>
+            <div><h4>Sourced Individually</h4><p>Each watch and piece of jewellery is selected in person, not bought in bulk from a wholesaler.</p></div>
+          </div>
+          <div class="diff-item">
+            <div class="n">02</div>
+            <div><h4>Authenticated Before Listing</h4><p>Provenance and condition are verified before anything is offered for sale — not after a query is raised.</p></div>
+          </div>
+          <div class="diff-item">
+            <div class="n">03</div>
+            <div><h4>Viewed by Appointment</h4><p>Every serious enquiry is met in person where possible, so you handle the piece before deciding.</p></div>
+          </div>
+          <div class="diff-item">
+            <div class="n">04</div>
+            <div><h4>No Pressure to Decide</h4><p>Pieces are held, not rushed — there is no countdown timer attached to any listing.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="diff-visual reveal">
+        <img src="https://picsum.photos/seed/yanlaiauthenticate/900/1100" alt="Authenticating a fine watch" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="spotlight">
+      <div class="spot-visual reveal">
+        <img src="https://picsum.photos/seed/yanlaispotlight/900/1100" alt="Featured vintage watch" />
+      </div>
+      <div class="spot-copy reveal">
+        <span class="kicker">Currently Featured</span>
+        <h2 class="section-h">The 1960s Manual-Wind Dress Watch.</h2>
+        <p class="desc">A steel dress watch from the 1960s, fully serviced and fitted with a new leather strap. Sourced from a private estate and authenticated prior to listing.</p>
+        <div class="spec-list">
+          <div class="spec-row"><span>Case</span><span>Stainless steel, 34mm</span></div>
+          <div class="spec-row"><span>Movement</span><span>Manual wind</span></div>
+          <div class="spec-row"><span>Condition</span><span>Fully serviced, excellent</span></div>
+          <div class="spec-row"><span>Provenance</span><span>Private UK estate</span></div>
+        </div>
+        <a href="#appointment" class="btn-gold">Enquire on this piece <i class="ph-bold ph-arrow-up-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="craft-alt" id="craft">
+  <div class="section-pad wrap">
+    <div class="reveal" style="margin-bottom:70px; max-width:640px;">
+      <span class="kicker">Craftsmanship & Care</span>
+      <h2 class="section-h">How a piece reaches you.</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="t-step">
+        <div class="t-label">Sourcing</div>
+        <h3>Found, not manufactured to order</h3>
+        <p>Pieces are sourced from private collections, estate sales, and trusted trade contacts across the UK — never mass-produced to a catalogue.</p>
+      </div>
+      <div class="t-step">
+        <div class="t-label">Authentication</div>
+        <h3>Verified before it's offered</h3>
+        <p>Provenance, hallmarks, and movement condition are checked against reference records before a piece is ever listed.</p>
+      </div>
+      <div class="t-step">
+        <div class="t-label">Restoration</div>
+        <h3>Serviced where needed</h3>
+        <p>Watches are serviced by a qualified horologist and jewellery is cleaned and inspected for setting security.</p>
+      </div>
+      <div class="t-step">
+        <div class="t-label">Viewing</div>
+        <h3>Handled, not just photographed</h3>
+        <p>Serious enquiries are invited to view the piece by private appointment before any commitment is made.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:60px; max-width:640px;">
+      <span class="kicker">In Their Words</span>
+      <h2 class="section-h">Clients who viewed before they bought.</h2>
+    </div>
+    <div class="quote-grid reveal">
+      <div class="quote-card">
+        <div class="qmark">"</div>
+        <p class="q">Yanyan found me a watch I'd been searching for privately for two years, and had the paperwork to prove its history before I even asked.</p>
+        <div class="quote-person"><div class="name">M. Ahmed</div><div class="loc">Canary Wharf, London</div></div>
+      </div>
+      <div class="quote-card">
+        <div class="qmark">"</div>
+        <p class="q">No pressure, no countdown, no marketplace theatre. Just a piece, its history, and time to decide properly.</p>
+        <div class="quote-person"><div class="name">C. Whitfield</div><div class="loc">Chelsea, London</div></div>
+      </div>
+      <div class="quote-card">
+        <div class="qmark">"</div>
+        <p class="q">The ring was exactly as described, and the viewing appointment meant I could check the setting myself before paying anything.</p>
+        <div class="quote-person"><div class="name">S. Devine</div><div class="loc">Greenwich, London</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="appointment">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:60px; max-width:640px;">
+      <span class="kicker">Private Viewing</span>
+      <h2 class="section-h">Book an appointment.</h2>
+    </div>
+    <div class="appt-grid reveal">
+      <div class="appt-info">
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-map-pin"></i></div>
+          <div><div class="tt">Viewing Location</div><div class="dd">Millharbour, Canary Wharf, London, E14 9JU — by appointment only</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-clock"></i></div>
+          <div><div class="tt">Availability</div><div class="dd">Weekday and weekend appointments, arranged individually</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-envelope-simple"></i></div>
+          <div><div class="tt">Enquiries</div><div class="dd">enquiries@yanlai.co.uk</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-buildings"></i></div>
+          <div><div class="tt">Company Registration</div><div class="dd">Yanlai Ltd · No. 15610155 · England &amp; Wales</div></div>
+        </div>
+      </div>
+      <form class="appt-form" onsubmit="return false;">
+        <div class="f-row">
+          <div class="f-field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" />
+          </div>
+          <div class="f-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@email.com" />
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="interest">Interested In</label>
+            <select id="interest">
+              <option>Fine Watches</option>
+              <option>Jewellery</option>
+              <option>Selling a Piece</option>
+              <option>Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" />
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="msg">Message</label>
+          <textarea id="msg" placeholder="Tell us what you're looking for, or which piece caught your eye"></textarea>
+        </div>
+        <button type="submit" class="btn-gold">Request Appointment <i class="ph-bold ph-arrow-up-right"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top wrap">
+    <div class="foot-brand">
+      <div class="brand-mark">YANLAI</div>
+      <p>A private dealer of fine watches and jewellery, based in Canary Wharf, London, viewed strictly by appointment.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="#collections">Collections</a>
+      <a href="#difference">The Difference</a>
+      <a href="#craft">Craftsmanship</a>
+    </div>
+    <div class="foot-col">
+      <h4>Visit</h4>
+      <a href="#appointment">Book a Viewing</a>
+      <a href="#appointment">Millharbour, London E14</a>
+      <a href="#appointment">enquiries@yanlai.co.uk</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Authentication Policy</a>
+      <a href="#">Terms of Sale</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 Yanlai Ltd. All rights reserved.</p>
+    <p>Registered in England &amp; Wales, Company No. 15610155</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 40){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
