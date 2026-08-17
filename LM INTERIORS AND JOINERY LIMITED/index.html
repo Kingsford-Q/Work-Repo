@@ -1,1 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LM Interiors & Joinery — Bespoke Joinery, Greater Manchester</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+  :root{
+    --canvas: #FBFAF8;
+    --canvas-warm: #F5F0E8;
+    --surface: #FFFFFF;
+    --ink: #1C1712;
+    --ink-soft: #5B5348;
+    --line: #E6DFD3;
+    --line-soft: rgba(28,23,18,0.07);
+    --accent: #8A5A2B;       /* walnut / timber */
+    --accent-soft: #F1E4D1;
+    --accent-soft-text: #8A5A2B;
+    --moss: #EAEEE3;
+    --moss-text: #4C5E3C;
+    --serif: 'Newsreader', serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
 
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection{ background: var(--accent-soft); color: var(--accent-soft-text); }
+  a{ color: inherit; text-decoration: none; }
+  img{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+
+  .grain{
+    position: fixed; inset:0; z-index: 60; pointer-events:none;
+    opacity: 0.035; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .ambient{
+    position: fixed; top: -20%; left: -12%;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(138,90,43,0.06), transparent 70%);
+    pointer-events: none; z-index: 0;
+    animation: drift 26s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(40px, 50px) scale(1.08); }
+  }
+
+  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,250,248,0.85);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 32px; max-width: 1360px; margin: 0 auto;
+  }
+  .logo{
+    font-family: var(--serif); font-style: italic; font-size: 22px;
+    letter-spacing: -0.01em; display:flex; align-items:center; gap:10px;
+  }
+  .logo .mark{
+    width: 30px; height: 30px; border-radius: 6px;
+    border: 1px solid var(--ink); display:flex; align-items:center; justify-content:center;
+    font-family: var(--serif); font-style: normal; font-size: 14px;
+  }
+  .navlinks{ display:flex; gap: 36px; font-size: 14px; color: var(--ink-soft); }
+  .navlinks a{ position:relative; padding-bottom: 4px; transition: color .2s; }
+  .navlinks a:hover{ color: var(--ink); }
+  .navlinks a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--ink);
+    transition: width .3s cubic-bezier(.16,1,.3,1);
+  }
+  .navlinks a:hover::after{ width: 100%; }
+  .nav-cta{
+    font-size: 13px; padding: 11px 22px; border-radius: 5px;
+    background: var(--ink); color: #fff; letter-spacing: 0.02em;
+    transition: transform .15s ease, background .2s ease;
+  }
+  .nav-cta:hover{ background: #3a322a; }
+  .nav-cta:active{ transform: scale(0.97); }
+
+  /* ---------- hero: left-aligned asymmetric, not split ---------- */
+  .hero{
+    display:grid; grid-template-columns: 1fr;
+    min-height: 88vh; position: relative; z-index: 1;
+    padding-top: 40px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px;
+    align-items:center; flex: 1;
+  }
+  .hero-content{ padding: 40px 32px 40px 0; max-width: 640px; }
+  .eyebrow{
+    display:flex; align-items:center; gap: 10px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-soft-text); margin-bottom: 26px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--accent); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.4; transform:scale(0.8);} }
+
+  h1.hero-h{
+    font-family: var(--serif); font-weight: 400; font-style: italic;
+    font-size: clamp(40px, 5.6vw, 64px);
+    line-height: 1.04; letter-spacing: -0.02em;
+    margin-bottom: 26px;
+  }
+  h1.hero-h .not-italic{ font-style: normal; color: var(--accent-soft-text); }
+  .hero-sub{ font-size: 17px; color: var(--ink-soft); max-width: 48ch; margin-bottom: 38px; }
+  .hero-actions{ display:flex; gap: 16px; align-items:center; flex-wrap: wrap; }
+  .btn-primary{
+    font-size: 14px; padding: 15px 28px; border-radius: 5px;
+    background: var(--ink); color:#fff; display:inline-flex; align-items:center; gap:8px;
+    transition: transform .15s ease, background .2s ease;
+  }
+  .btn-primary:hover{ background:#3a322a; }
+  .btn-primary:active{ transform: scale(0.97); }
+  .btn-ghost{
+    font-size: 14px; padding: 15px 22px; border-radius: 5px;
+    border: 1px solid var(--line); color: var(--ink);
+    display:inline-flex; align-items:center; gap: 8px;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover{ border-color: var(--ink); background: var(--surface); }
+
+  .hero-meta{ display:flex; gap: 32px; margin-top: 54px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .hero-meta div{ display:flex; flex-direction:column; gap:4px; }
+  .hero-meta .num{ font-family: var(--serif); font-style: italic; font-size: 26px; }
+  .hero-meta .lbl{ font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .hero-visual{ position: relative; border-radius: 18px; overflow:hidden; aspect-ratio: 4/5; }
+  .hero-visual img{ width:100%; height:100%; object-fit: cover; filter: sepia(0.08) contrast(1.03); }
+  .hero-visual::after{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(251,250,248,0) 60%, rgba(28,23,18,0.35) 100%);
+  }
+  .float-card{
+    position:absolute; bottom: 24px; left: 24px; right: 24px; z-index: 5;
+    background: rgba(255,255,255,0.94); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 20px 40px -20px rgba(28,23,18,0.25);
+    border-radius: 12px; padding: 18px 20px;
+    display:flex; align-items:center; gap: 14px;
+  }
+  .float-card .ic{
+    width: 38px; height:38px; border-radius: 8px; background: var(--moss); color: var(--moss-text);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .float-card .t1{ font-size: 13px; font-weight:500; }
+  .float-card .t2{ font-size: 12px; color: var(--ink-soft); }
+
+  /* ---------- marquee ---------- */
+  .strip{
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: var(--surface); overflow: hidden; padding: 18px 0; position: relative; z-index: 1;
+  }
+  .marquee{ display:flex; width: max-content; animation: scroll-x 34s linear infinite; }
+  .marquee span{
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--ink-soft);
+    padding: 0 40px; display:flex; align-items:center; gap: 10px; white-space: nowrap;
+  }
+  .marquee span i{ color: var(--accent-soft-text); font-size: 6px; }
+  @keyframes scroll-x{ from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
+
+  section{ position: relative; z-index: 1; }
+  .section-pad{ padding: 120px 32px; }
+  .section-head{ display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 64px; }
+  .kicker{
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-soft-text); margin-bottom: 18px; display:block;
+  }
+  h2.section-h{
+    font-family: var(--serif); font-weight: 400; font-style: italic;
+    font-size: clamp(32px, 4vw, 46px); letter-spacing: -0.01em; line-height: 1.05;
+  }
+  .section-desc{ color: var(--ink-soft); font-size: 15.5px; max-width: 42ch; justify-self: end; }
+
+  /* ---------- services bento ---------- */
+  .bento{
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  }
+  .bento-item{ background: var(--surface); padding: 36px; display:flex; flex-direction: column; transition: background .25s ease; }
+  .bento-item:hover{ background: var(--canvas-warm); }
+  .bi-1{ grid-column: span 3; grid-row: span 2; }
+  .bi-2{ grid-column: span 3; }
+  .bi-3{ grid-column: span 2; }
+  .bi-4{ grid-column: span 2; }
+  .bi-5{ grid-column: span 2; }
+  .bi-6{ grid-column: span 3; }
+  .bi-7{ grid-column: span 3; }
+
+  .b-icon{
+    width: 46px; height:46px; border-radius: 10px; display:flex; align-items:center; justify-content:center;
+    background: var(--accent-soft); color: var(--accent-soft-text); font-size: 20px; margin-bottom: 22px;
+  }
+  .bi-1 .b-icon{ background: var(--moss); color: var(--moss-text); }
+  .b-title{ font-size: 18px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .b-desc{ font-size: 14px; color: var(--ink-soft); flex:1; }
+  .b-price{
+    margin-top: 20px; display:flex; align-items:center; justify-content: space-between;
+    font-family: var(--mono); font-size: 12px; color: var(--ink-soft);
+    padding-top: 16px; border-top: 1px solid var(--line-soft);
+  }
+  .b-price strong{ color: var(--ink); font-size: 14px; font-family: var(--sans); font-weight: 600; }
+  .bi-1 .b-title{ font-size: 24px; font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .bi-1 .b-desc{ font-size: 15px; max-width: 40ch; }
+
+  /* ---------- about ---------- */
+  .about{ display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 70px; align-items: center; }
+  .about-visual{ position: relative; }
+  .about-visual img{ border-radius: 16px; width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: sepia(0.06) contrast(1.02); }
+  .about-badge{
+    position:absolute; bottom: -24px; right: -24px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 24px; box-shadow: 0 20px 50px -25px rgba(28,23,18,0.22); max-width: 220px;
+  }
+  .about-badge .stars{ color: var(--accent-soft-text); font-size: 14px; margin-bottom: 8px; letter-spacing: 2px; }
+  .about-badge p{ font-size: 12.5px; color: var(--ink-soft); }
+  .about-copy p{ color: var(--ink-soft); font-size: 15.5px; margin-bottom: 20px; max-width: 54ch; }
+  .cred-list{ display:flex; flex-direction: column; gap: 18px; margin-top: 34px; }
+  .cred{ display:flex; gap: 16px; align-items: flex-start; }
+  .cred .ic{
+    width: 34px; height:34px; border-radius: 8px; flex-shrink:0; background: var(--moss); color: var(--moss-text);
+    display:flex; align-items:center; justify-content:center; font-size: 15px;
+  }
+  .cred .tt{ font-size: 14.5px; font-weight: 500; margin-bottom: 2px; }
+  .cred .dd{ font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ---------- process ---------- */
+  .process-alt{ background: var(--canvas-warm); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .steps{ display:grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+  .step{ padding: 0 30px 0 0; position: relative; }
+  .step:not(:last-child)::after{
+    content:''; position:absolute; top: 24px; right: -1px; width: 1px; height: calc(100% - 24px); background: var(--line);
+  }
+  .step-num{ font-family: var(--serif); font-style: italic; font-size: 40px; color: var(--accent-soft-text); margin-bottom: 18px; }
+  .step h3{ font-size: 16px; font-weight: 500; margin-bottom: 10px; }
+  .step p{ font-size: 14px; color: var(--ink-soft); max-width: 30ch; }
+
+  /* ---------- gallery ---------- */
+  .gallery{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .g-item{ border-radius: 12px; overflow:hidden; position: relative; }
+  .g-item img{ width:100%; height:100%; object-fit:cover; transition: transform .5s cubic-bezier(.16,1,.3,1); filter: sepia(0.06) contrast(1.02); }
+  .g-item:hover img{ transform: scale(1.05); }
+  .g-tall{ grid-row: span 2; }
+  .g-item .g-label{
+    position:absolute; bottom:0; left:0; right:0; padding: 16px;
+    background: linear-gradient(0deg, rgba(28,23,18,0.65), transparent);
+    color:#fff; font-size: 13px; font-family: var(--mono); letter-spacing: 0.03em;
+  }
+
+  /* ---------- testimonials ---------- */
+  .t-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .t-card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 32px;
+    display:flex; flex-direction:column; transition: box-shadow .25s ease, transform .25s ease;
+  }
+  .t-card:hover{ box-shadow: 0 24px 60px -30px rgba(28,23,18,0.18); transform: translateY(-3px); }
+  .t-card .stars{ color: var(--accent-soft-text); font-size: 13px; letter-spacing: 3px; margin-bottom: 18px; }
+  .t-card p.quote{ font-size: 14.5px; color: var(--ink); margin-bottom: 24px; flex: 1; line-height: 1.65; }
+  .t-person{ display:flex; align-items:center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line-soft); }
+  .t-avatar{
+    width: 38px; height: 38px; border-radius: 50%; background: var(--moss); color: var(--moss-text);
+    display:flex; align-items:center; justify-content:center; font-family: var(--serif); font-style: italic; font-size: 16px;
+  }
+  .t-name{ font-size: 13.5px; font-weight: 500; }
+  .t-loc{ font-size: 12px; color: var(--ink-soft); }
+
+  /* ---------- FAQ ---------- */
+  .faq-wrap{ max-width: 880px; }
+  .faq-item{ border-bottom: 1px solid var(--line); }
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding: 26px 4px; display:flex; align-items:center; justify-content: space-between;
+    font-size: 16px; font-weight: 500; color: var(--ink); font-family: var(--sans);
+  }
+  .faq-q .toggle{ font-size: 20px; color: var(--accent-soft-text); font-family: var(--mono); flex-shrink:0; margin-left: 20px; transition: transform .3s ease; }
+  .faq-item.open .toggle{ transform: rotate(45deg); }
+  .faq-a{ max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.16,1,.3,1); }
+  .faq-a p{ padding: 0 4px 26px; color: var(--ink-soft); font-size: 14.5px; max-width: 62ch; }
+
+  /* ---------- CTA ---------- */
+  .cta-banner{
+    background: var(--ink); color: #fff; border-radius: 24px; padding: 80px 60px; text-align: left;
+    display:grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; position: relative; overflow: hidden;
+  }
+  .cta-banner::before{
+    content:''; position:absolute; top:-30%; left:-10%; width: 500px; height:500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+  }
+  .cta-banner h2{
+    font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+  .cta-banner p{ color: rgba(255,255,255,0.65); font-size: 15px; max-width: 42ch; }
+  .cta-side{ display:flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .btn-light{
+    background: #fff; color: var(--ink); font-size: 14px; padding: 15px 28px; border-radius: 5px;
+    display:inline-flex; align-items:center; gap: 8px; transition: transform .15s ease;
+  }
+  .btn-light:active{ transform: scale(0.97); }
+  .cta-side .phone{ font-family: var(--mono); font-size: 14px; color: rgba(255,255,255,0.7); display:flex; align-items:center; gap:8px; }
+
+  /* ---------- location ---------- */
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .info-row{ display:flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .info-row .ic{ width: 38px; height:38px; border-radius: 9px; background: var(--accent-soft); color: var(--accent-soft-text); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; }
+  .info-row .tt{ font-size: 14.5px; font-weight: 500; margin-bottom: 3px; }
+  .info-row .dd{ font-size: 13.5px; color: var(--ink-soft); }
+  .map-frame{
+    background: var(--canvas-warm); border: 1px solid var(--line); border-radius: 16px;
+    height: 100%; min-height: 340px; display:flex; align-items:center; justify-content:center; position: relative; overflow: hidden;
+  }
+  .map-frame .pin{ display:flex; flex-direction:column; align-items:center; gap: 10px; position: relative; z-index: 2; }
+  .map-frame .pin .dot-pin{
+    width: 46px; height:46px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+    background: var(--ink); display:flex; align-items:center; justify-content:center;
+  }
+  .map-frame .pin .dot-pin i{ transform: rotate(45deg); color:#fff; font-size: 18px; }
+  .map-frame .pin span{ font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); text-align:center; }
+  .map-lines{ position:absolute; inset:0; opacity: 0.5; }
+
+  /* ---------- footer ---------- */
+  footer{ border-top: 1px solid var(--line); background: var(--surface); }
+  .foot-top{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding: 80px 32px 60px; }
+  .foot-brand .logo{ margin-bottom: 18px; }
+  .foot-brand p{ font-size: 13.5px; color: var(--ink-soft); max-width: 36ch; }
+  .foot-col h4{ font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 20px; }
+  .foot-col a{ display:block; font-size: 14px; color: var(--ink); margin-bottom: 12px; transition: color .2s; }
+  .foot-col a:hover{ color: var(--accent-soft-text); }
+  .foot-bottom{
+    border-top: 1px solid var(--line); padding: 26px 32px;
+    display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 12px;
+    max-width: 1360px; margin: 0 auto;
+  }
+  .foot-bottom p{ font-size: 12.5px; color: var(--ink-soft); font-family: var(--mono); }
+  .foot-legal{ display:flex; gap: 4px; align-items:center; font-size: 12.5px; color: var(--ink-soft); font-family: var(--mono); }
+
+  @media (max-width: 980px){
+    .navlinks{ display:none; }
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-visual{ order: -1; aspect-ratio: 16/10; }
+    .hero-content{ padding: 40px 24px; max-width: none; }
+    .section-head{ grid-template-columns: 1fr; }
+    .section-desc{ justify-self: start; margin-top: 10px; }
+    .bento{ grid-template-columns: repeat(2, 1fr); }
+    .bi-1,.bi-2,.bi-3,.bi-4,.bi-5,.bi-6,.bi-7{ grid-column: span 2; grid-row: auto; }
+    .about{ grid-template-columns: 1fr; }
+    .about-badge{ position: static; margin-top: -60px; margin-left: auto; }
+    .steps{ grid-template-columns: 1fr 1fr; row-gap: 36px; }
+    .step:nth-child(2)::after{ display:none; }
+    .gallery{ grid-template-columns: repeat(2,1fr); }
+    .g-tall{ grid-row: auto; }
+    .t-grid{ grid-template-columns: 1fr; }
+    .cta-banner{ grid-template-columns: 1fr; padding: 50px 32px; }
+    .contact-grid{ grid-template-columns: 1fr; }
+    .foot-top{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px){
+    .wrap, .section-pad{ padding-left: 20px; padding-right: 20px; }
+    .steps{ grid-template-columns: 1fr; }
+    .gallery{ grid-template-columns: 1fr 1fr; }
+    .foot-top{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="ambient"></div>
+
+<header>
+  <nav>
+    <div class="logo">
+      <span class="mark">LM</span>
+      LM Interiors &amp; Joinery
+    </div>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Request a Quote</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-content reveal">
+      <div class="eyebrow"><span class="dot"></span>Company No. 15610157 · Greater Manchester</div>
+      <h1 class="hero-h">Joinery built to <span class="not-italic">outlast the fashion</span> around it.</h1>
+      <p class="hero-sub">LM Interiors and Joinery Limited designs and installs bespoke fitted furniture, staircases, and interior joinery across Greater Manchester — built by hand, fitted properly, and finished to last decades, not seasons.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Request a quote <i class="ph-bold ph-arrow-up-right"></i></a>
+        <a href="#work" class="btn-ghost">See our work <i class="ph ph-hammer"></i></a>
+      </div>
+      <div class="hero-meta">
+        <div><span class="num">LM</span><span class="lbl">Founder-Led Workshop</span></div>
+        <div><span class="num">1:1</span><span class="lbl">Bespoke to Every Room</span></div>
+        <div><span class="num">OL10</span><span class="lbl">Heywood, Gtr Manchester</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <img src="https://picsum.photos/seed/lmjoinerywork/900/1150" alt="Bespoke joinery workshop" />
+      <div class="float-card">
+        <div class="ic"><i class="ph ph-ruler"></i></div>
+        <div>
+          <div class="t1">Measured, drawn, then built</div>
+          <div class="t2">No off-the-shelf sizing, ever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="marquee">
+    <span><i class="ph-fill ph-circle"></i>Fitted Wardrobes</span>
+    <span><i class="ph-fill ph-circle"></i>Bespoke Kitchens</span>
+    <span><i class="ph-fill ph-circle"></i>Staircases</span>
+    <span><i class="ph-fill ph-circle"></i>Internal Doors &amp; Frames</span>
+    <span><i class="ph-fill ph-circle"></i>Alcove Shelving &amp; Media Units</span>
+    <span><i class="ph-fill ph-circle"></i>Site Measure Before Every Job</span>
+    <span><i class="ph-fill ph-circle"></i>Fitted Wardrobes</span>
+    <span><i class="ph-fill ph-circle"></i>Bespoke Kitchens</span>
+    <span><i class="ph-fill ph-circle"></i>Staircases</span>
+    <span><i class="ph-fill ph-circle"></i>Internal Doors &amp; Frames</span>
+    <span><i class="ph-fill ph-circle"></i>Alcove Shelving &amp; Media Units</span>
+    <span><i class="ph-fill ph-circle"></i>Site Measure Before Every Job</span>
+  </div>
+</div>
+
+<section class="section-pad" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker">Services</span>
+        <h2 class="section-h">Made for the room, not adapted to fit it.</h2>
+      </div>
+      <p class="section-desc">Every piece starts with a site visit and a set of hand-drawn measurements — never a catalogue size.</p>
+    </div>
+
+    <div class="bento reveal">
+      <div class="bento-item bi-1">
+        <div class="b-icon"><i class="ph ph-ruler-fill"></i></div>
+        <div class="b-title">Site Survey & Design</div>
+        <div class="b-desc">A full measure-up and design consultation before any material is ordered. We sketch the piece with you, adjust it on the spot, and only then price it properly.</div>
+        <div class="b-price"><span>ON-SITE VISIT</span><strong>Free, no obligation</strong></div>
+      </div>
+      <div class="bento-item bi-2">
+        <div class="b-icon"><i class="ph ph-door"></i></div>
+        <div class="b-title">Fitted Wardrobes</div>
+        <div class="b-desc">Floor-to-ceiling storage built around awkward corners, sloped ceilings, and chimney breasts.</div>
+        <div class="b-price"><span>PER RUN</span><strong>From £1,850</strong></div>
+      </div>
+      <div class="bento-item bi-3">
+        <div class="b-icon"><i class="ph ph-cooking-pot"></i></div>
+        <div class="b-title">Bespoke Kitchens</div>
+        <div class="b-desc">Solid timber carcasses and doors, built to your layout rather than a modular grid.</div>
+        <div class="b-price"><span>FROM DESIGN</span><strong>From £6,500</strong></div>
+      </div>
+      <div class="bento-item bi-4">
+        <div class="b-icon"><i class="ph ph-stairs"></i></div>
+        <div class="b-title">Staircases</div>
+        <div class="b-desc">New builds, refurbishments, and cladding over existing stairs in solid oak or painted softwood.</div>
+        <div class="b-price"><span>PER STAIR</span><strong>From £2,400</strong></div>
+      </div>
+      <div class="bento-item bi-5">
+        <div class="b-icon"><i class="ph ph-square-half"></i></div>
+        <div class="b-title">Alcove Shelving</div>
+        <div class="b-desc">Built-in shelving and media units either side of a chimney breast, scribed tight to the wall.</div>
+        <div class="b-price"><span>PER ALCOVE</span><strong>From £950</strong></div>
+      </div>
+      <div class="bento-item bi-6">
+        <div class="b-icon"><i class="ph ph-frame-corners"></i></div>
+        <div class="b-title">Internal Doors & Frames</div>
+        <div class="b-desc">Hardwood and painted internal doors, hung and finished to trade standard, room by room.</div>
+        <div class="b-price"><span>PER DOOR</span><strong>From £320</strong></div>
+      </div>
+      <div class="bento-item bi-7">
+        <div class="b-icon"><i class="ph ph-wrench"></i></div>
+        <div class="b-title">Snagging & Aftercare</div>
+        <div class="b-desc">A return visit included with every install to adjust hinges, fillers, and finish once settled.</div>
+        <div class="b-price"><span>6 WEEKS</span><strong>Included</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="work" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker">Our Work</span>
+        <h2 class="section-h">Recent installs across Greater Manchester.</h2>
+      </div>
+      <p class="section-desc">A small sample of joinery fitted in Heywood, Rochdale, and the wider Manchester area.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="g-item g-tall">
+        <img src="https://picsum.photos/seed/lmwardrobe/500/700" alt="Fitted wardrobe installation" />
+        <div class="g-label">Fitted Wardrobe — Heywood</div>
+      </div>
+      <div class="g-item">
+        <img src="https://picsum.photos/seed/lmkitchen/500/350" alt="Bespoke kitchen joinery" />
+        <div class="g-label">Bespoke Kitchen — Bury</div>
+      </div>
+      <div class="g-item">
+        <img src="https://picsum.photos/seed/lmstair/500/350" alt="Staircase renovation" />
+        <div class="g-label">Staircase Refit — Rochdale</div>
+      </div>
+      <div class="g-item g-tall">
+        <img src="https://picsum.photos/seed/lmshelving/500/700" alt="Alcove shelving unit" />
+        <div class="g-label">Alcove Shelving — Manchester</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="about" style="padding-top:0;">
+  <div class="wrap">
+    <div class="about">
+      <div class="about-visual reveal">
+        <img src="https://picsum.photos/seed/lukemutchjoiner/700/900" alt="Luke Mutch, founder and joiner" />
+        <div class="about-badge">
+          <div class="stars">★★★★★</div>
+          <p>"Luke measured twice, quoted straight, and the fit was exact down to the skirting."</p>
+        </div>
+      </div>
+      <div class="about-copy reveal">
+        <span class="kicker">The Joiner Behind the Workshop</span>
+        <h2 class="section-h" style="margin-bottom:24px;">Luke Mutch, founder.</h2>
+        <p>LM Interiors and Joinery Limited was founded by Luke Mutch to bring proper trade joinery back to fitted interiors — the kind measured on site, cut to the room, and fitted by the person who built it, not handed off down a chain of subcontractors.</p>
+        <p>The company was incorporated in April 2024 and works across Heywood, Rochdale, Bury, and greater Manchester, taking on a limited number of projects at a time so each one gets a proper site visit before it gets a quote.</p>
+        <div class="cred-list">
+          <div class="cred">
+            <div class="ic"><i class="ph ph-hammer"></i></div>
+            <div><div class="tt">Trade Joiner, Hands-On</div><div class="dd">Every install fitted personally by Luke, not a rotating crew.</div></div>
+          </div>
+          <div class="cred">
+            <div class="ic"><i class="ph ph-buildings"></i></div>
+            <div><div class="tt">Company No. 15610157</div><div class="dd">Incorporated with Companies House, England &amp; Wales.</div></div>
+          </div>
+          <div class="cred">
+            <div class="ic"><i class="ph ph-map-pin"></i></div>
+            <div><div class="tt">Based in Heywood</div><div class="dd">Serving Heywood, Rochdale, Bury &amp; Greater Manchester.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-alt" id="process">
+  <div class="section-pad wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker">How It Works</span>
+        <h2 class="section-h">Four steps, always measured twice.</h2>
+      </div>
+      <p class="section-desc">No quote is given until the room has been measured in person.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Enquire</h3>
+        <p>Send photos and rough dimensions of the space you're looking to fit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Site Survey</h3>
+        <p>Luke visits in person to measure, discuss materials, and sketch the design.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Build & Fit</h3>
+        <p>Pieces are built in the workshop, then installed and finished on site.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Snag & Settle</h3>
+        <p>A return visit six weeks on to adjust anything that's settled or moved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker">Reviews</span>
+        <h2 class="section-h">What clients say once the sawdust has settled.</h2>
+      </div>
+      <p class="section-desc">Feedback gathered after the snagging visit, not just on handover day.</p>
+    </div>
+    <div class="t-grid reveal">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">We'd had two other quotes that didn't account for our sloped ceiling at all. Luke measured it properly and the wardrobe fits like it was always meant to be there.</p>
+        <div class="t-person">
+          <div class="t-avatar">D</div>
+          <div><div class="t-name">David R.</div><div class="t-loc">Heywood, Gtr Manchester</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">The staircase refit was finished in a week and he came back a month later, unprompted, to tighten a squeaky tread. That kind of follow-through is rare in this trade.</p>
+        <div class="t-person">
+          <div class="t-avatar">S</div>
+          <div><div class="t-name">Sarah K.</div><div class="t-loc">Rochdale, Gtr Manchester</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Our kitchen has an odd chimney breast that every fitted supplier wanted to box around. Luke built the units to follow the wall instead. Completely worth the wait.</p>
+        <div class="t-person">
+          <div class="t-avatar">J</div>
+          <div><div class="t-name">James T.</div><div class="t-loc">Bury, Gtr Manchester</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="faq" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker">Questions</span>
+        <h2 class="section-h">Before you book a survey.</h2>
+      </div>
+      <p class="section-desc">Anything else, ask it during the site visit — that's what it's for.</p>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item">
+        <button class="faq-q">Do you charge for a site survey? <span class="toggle">+</span></button>
+        <div class="faq-a"><p>No. The initial site visit and measure-up is free and comes with no obligation to proceed. You only pay once you've accepted a written quote.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What areas do you cover? <span class="toggle">+</span></button>
+        <div class="faq-a"><p>We work primarily across Heywood, Rochdale, Bury, and the wider Greater Manchester area. Get in touch if you're just outside this — we may still be able to help.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does a typical install take? <span class="toggle">+</span></button>
+        <div class="faq-a"><p>Most fitted wardrobes and alcove units take 3–5 working days on site. Kitchens and staircases vary depending on scope and are confirmed at quote stage.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you supply materials, or can I choose my own? <span class="toggle">+</span></button>
+        <div class="faq-a"><p>We can source timber and hardware directly, or work with materials you've already chosen. Either way, it's discussed and priced at the design stage.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is there a warranty on the finished work? <span class="toggle">+</span></button>
+        <div class="faq-a"><p>Every install includes a snagging visit around six weeks after completion, plus a workmanship guarantee detailed in your written quote.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-banner reveal">
+      <div>
+        <h2>Have a room that needs measuring, not guessing?</h2>
+        <p>Book a free site survey with Luke and get a written quote based on your actual space — not a catalogue estimate.</p>
+      </div>
+      <div class="cta-side">
+        <a href="#contact" class="btn-light">Book a site survey <i class="ph-bold ph-arrow-up-right"></i></a>
+        <div class="phone"><i class="ph ph-phone"></i>Available Mon–Fri, site visits by arrangement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="contact" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker">Get in Touch</span>
+        <h2 class="section-h">Based in Heywood, working across Greater Manchester.</h2>
+      </div>
+      <p class="section-desc">Send a few photos and rough measurements to start, or request a site visit directly.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-map-pin"></i></div>
+          <div><div class="tt">Registered Office</div><div class="dd">C/O Greengrass Accountants Ltd, 151 Green Lane, Heywood, Greater Manchester, OL10 2EW</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-clock"></i></div>
+          <div><div class="tt">Hours</div><div class="dd">Monday–Friday, site visits arranged around your schedule</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-envelope-simple"></i></div>
+          <div><div class="tt">Enquiries</div><div class="dd">hello@lminteriorsjoinery.co.uk</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="ph ph-buildings"></i></div>
+          <div><div class="tt">Company Registration</div><div class="dd">LM Interiors and Joinery Limited · No. 15610157 · England &amp; Wales</div></div>
+        </div>
+      </div>
+      <div class="map-frame">
+        <svg class="map-lines" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="60" x2="400" y2="60" stroke="#E6DFD3" stroke-width="1"/>
+          <line x1="0" y1="150" x2="400" y2="150" stroke="#E6DFD3" stroke-width="1"/>
+          <line x1="0" y1="240" x2="400" y2="240" stroke="#E6DFD3" stroke-width="1"/>
+          <line x1="90" y1="0" x2="90" y2="340" stroke="#E6DFD3" stroke-width="1"/>
+          <line x1="230" y1="0" x2="230" y2="340" stroke="#E6DFD3" stroke-width="1"/>
+          <line x1="320" y1="0" x2="320" y2="340" stroke="#E6DFD3" stroke-width="1"/>
+        </svg>
+        <div class="pin">
+          <div class="dot-pin"><i class="ph-fill ph-map-pin"></i></div>
+          <span>Heywood<br/>Greater Manchester, OL10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top wrap">
+    <div class="foot-brand">
+      <div class="logo"><span class="mark">LM</span>LM Interiors &amp; Joinery</div>
+      <p>A founder-led joinery workshop based in Heywood, building bespoke fitted furniture, staircases, and interior joinery across Greater Manchester.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About Luke</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <a href="#contact">Heywood, Gtr Manchester</a>
+      <a href="#contact">hello@lminteriorsjoinery.co.uk</a>
+      <a href="#contact">Mon–Fri, by arrangement</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Quotation</a>
+      <a href="#">Workmanship Guarantee</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 LM Interiors and Joinery Limited. All rights reserved.</p>
+    <div class="foot-legal"><i class="ph ph-file-text"></i>Registered in England &amp; Wales, Company No. 15610157</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        if(o !== item){
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        ans.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
