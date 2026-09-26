@@ -1,1 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NW1 Investments Commercial | Commercial property in London</title>
+<meta name="description" content="NW1 Investments Commercial Limited buys, lets and manages commercial property across London. Talk to us about selling a building or finding space.">
+<meta name="theme-color" content="#E7E6E1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151B23" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NW1 Investments Commercial">
+<meta property="og:description" content="Commercial property in London, bought carefully and held for the long term.">
+<meta property="og:locale" content="en_GB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='10' width='60' height='44' rx='5' fill='%23fff' stroke='%231C2430' stroke-width='3'/%3E%3Ctext x='32' y='41' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='22' text-anchor='middle' fill='%23C8102E'%3ENW1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NW1 Investments Commercial Limited",
+  "legalName": "NW1 Investments Commercial Limited",
+  "foundingDate": "2024-04-02",
+  "identifier": "15610361",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "102 Princes Park Avenue",
+    "addressLocality": "London",
+    "postalCode": "NW11 0JX",
+    "addressCountry": "GB"
+  },
+  "parentOrganization": { "@type": "Organization", "name": "NW1 Investments Ltd", "identifier": "15455954" }
+}
+</script>
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --stone:#E7E6E1;       /* cool Portland stone */
+  --stone-2:#DCDAD3;
+  --paper:#F6F5F2;       /* enamel white, for panels */
+  --ink:#1C2430;         /* roof-slate blue-black */
+  --ink-2:#4A525C;
+  --muted:#6C727A;
+  --rule:#C9C6BD;
+  --sign-red:#C8102E;    /* London street-sign red */
+  --canal:#2F5D50;       /* Regent's Canal green */
+  --canal-ink:#F2F5F3;
+  --plate:#FFFFFF;
+  --plate-ink:#141414;
+  --focus:#2F5D50;
+  --wall-filter:none;
 
+  --font:"Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --step--1:clamp(.84rem,.82rem + .1vw,.9rem);
+  --step-0:clamp(1rem,.97rem + .15vw,1.08rem);
+  --step-1:clamp(1.2rem,1.12rem + .35vw,1.4rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2rem);
+  --step-3:clamp(2rem,1.6rem + 1.9vw,3.1rem);
+  --step-4:clamp(2.35rem,1.7rem + 2.7vw,4rem);
+
+  --wrap:1180px;
+  --gutter:clamp(1.25rem,4vw,3rem);
+  --section:clamp(4.5rem,9vw,8rem);
+  --radius-s:4px;
+  --radius-m:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stone:#151B23; --stone-2:#1C242E; --paper:#1E2731;
+    --ink:#E9EAE6; --ink-2:#BFC3C4; --muted:#949AA0; --rule:#323C47;
+    --canal:#5E9C89; --canal-ink:#0F1A16; --focus:#8CC7B4;
+    --wall-filter:brightness(.62) saturate(.85);
+  }
+}
+:root[data-theme="dark"]{
+  --stone:#151B23; --stone-2:#1C242E; --paper:#1E2731;
+  --ink:#E9EAE6; --ink-2:#BFC3C4; --muted:#949AA0; --rule:#323C47;
+  --canal:#5E9C89; --canal-ink:#0F1A16; --focus:#8CC7B4;
+  --wall-filter:brightness(.62) saturate(.85);
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--stone)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--font);font-size:var(--step-0);line-height:1.6;font-feature-settings:"ss01","kern";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-weight:700;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0 0 1em;text-wrap:pretty}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:absolute;left:1rem;top:-100px;background:var(--ink);color:var(--stone);padding:.6rem 1rem;border-radius:var(--radius-s);z-index:100}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 1rem)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Header ---------- */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--stone) 88%,transparent);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.site-head.scrolled{border-bottom-color:var(--rule)}
+.head-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.brand-mark{display:grid;place-items:center;width:46px;height:32px;background:var(--plate);border:2px solid #141414;border-radius:4px;color:var(--sign-red);font-weight:800;font-size:.86rem;letter-spacing:.02em;box-shadow:inset 0 0 0 2px var(--plate),inset 0 0 0 3px #141414}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:.78rem;letter-spacing:0}
+.nav{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2rem)}
+.nav a{text-decoration:none;font-size:.95rem;font-weight:500;color:var(--ink-2)}
+.nav a:hover{color:var(--ink);text-decoration:underline}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:46px;padding:.7rem 1.2rem;border-radius:var(--radius-s);font:600 .98rem/1 var(--font);text-decoration:none;border:2px solid var(--ink);cursor:pointer;transition:background .15s,color .15s,transform .15s}
+.btn-solid{background:var(--ink);color:var(--stone)}
+.btn-solid:hover{background:var(--canal);border-color:var(--canal);color:var(--canal-ink);text-decoration:none}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--stone);text-decoration:none}
+.btn:active{transform:translateY(1px)}
+.nav .btn{min-height:40px;padding:.55rem 1rem;color:var(--stone)}
+.nav .btn:hover{color:var(--canal-ink)}
+.theme-btn{background:none;border:0;padding:.4rem;color:var(--ink-2);cursor:pointer;border-radius:50%;display:grid;place-items:center}
+.theme-btn:hover{color:var(--ink)}
+.menu-btn{display:none;background:none;border:2px solid var(--ink);border-radius:var(--radius-s);color:var(--ink);font:600 .9rem var(--font);padding:.45rem .8rem;cursor:pointer}
+
+@media (max-width:860px){
+  .menu-btn{display:inline-flex}
+  .nav{position:fixed;inset:calc(env(safe-area-inset-top,0px) + 72px) 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--stone);border-bottom:1px solid var(--rule);padding:.5rem var(--gutter) 1.25rem;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s}
+  .nav.open{opacity:1;transform:none;visibility:visible}
+  .nav a{padding:.9rem 0;border-bottom:1px solid var(--rule);font-size:1.05rem}
+  .nav .btn{margin-top:1rem;border-bottom:2px solid var(--ink)}
+  .theme-btn{align-self:flex-start;margin-top:.75rem}
+}
+
+/* ---------- Hero ---------- */
+.hero{padding-block:clamp(2.5rem,6vw,5rem) clamp(3.5rem,6vw,5.5rem)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.035em;line-height:1.02;max-width:14ch}
+.hero-lede{font-size:var(--step-1);color:var(--ink-2);max-width:34ch;margin:1.6rem 0 2.2rem;line-height:1.5}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero-note{margin-top:2.4rem;font-size:var(--step--1);color:var(--muted);max-width:40ch}
+.hero-note a{color:var(--ink-2)}
+
+.wall{position:relative;aspect-ratio:4/4.4;border-radius:var(--radius-m);overflow:hidden;background:#C2A56E;isolation:isolate;box-shadow:0 1px 0 rgba(255,255,255,.4) inset}
+.wall svg.bricks{position:absolute;inset:0;width:100%;height:100%;filter:var(--wall-filter)}
+.wall::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(120% 80% at 20% 0%,rgba(255,255,255,.18),transparent 55%),
+  linear-gradient(180deg,transparent 60%,rgba(20,20,20,.22));pointer-events:none;z-index:1}
+.plate-wrap{position:absolute;left:50%;top:40%;width:min(86%,460px);translate:-50% -50%;z-index:2;container-type:inline-size}
+.plate{position:relative;background:var(--plate);color:var(--plate-ink);border-radius:2.2cqi;padding:7cqi 9cqi 6.4cqi;box-shadow:0 2px 0 rgba(0,0,0,.12),0 18px 30px -12px rgba(0,0,0,.45),0 4px 8px rgba(0,0,0,.12);transform-origin:50% 0}
+.plate::before{content:"";position:absolute;inset:2cqi;border:1.1cqi solid var(--plate-ink);border-radius:1.2cqi;pointer-events:none}
+.plate::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(255,255,255,.7),rgba(255,255,255,0) 40%,rgba(0,0,0,.04));pointer-events:none}
+.screw{position:absolute;width:3cqi;height:3cqi;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f4f4f4,#9a9a9a 70%);box-shadow:0 0 0 .35cqi #7d7d7d inset}
+.screw::after{content:"";position:absolute;left:18%;right:18%;top:46%;height:9%;background:#6f6f6f;transform:rotate(var(--r,30deg))}
+.screw.tl{left:6.4cqi;top:6.4cqi}.screw.tr{right:6.4cqi;top:6.4cqi;--r:-20deg}
+.screw.bl{left:6.4cqi;bottom:6.4cqi;--r:70deg}.screw.br{right:6.4cqi;bottom:6.4cqi;--r:10deg}
+.plate-top{display:block;text-align:center;font-weight:600;font-size:5.4cqi;letter-spacing:.01em;margin-bottom:1.2cqi}
+.plate-main{display:flex;align-items:baseline;justify-content:center;gap:3.2cqi;font-weight:800;line-height:1;letter-spacing:.015em}
+.plate-main .street{font-size:8.6cqi}
+.plate-main .district{font-size:8.6cqi;color:var(--sign-red)}
+.plate-rule{height:.7cqi;background:var(--plate-ink);margin:3.2cqi 8cqi 2.6cqi;opacity:.9}
+.plate-sub{display:block;text-align:center;font-weight:500;font-size:4.3cqi;color:#3a3a3a}
+
+.wall-caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1rem 1.2rem;color:#fff;font-size:var(--step--1);display:flex;justify-content:space-between;gap:1rem;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+
+@media (prefers-reduced-motion:no-preference){
+  .plate{animation:mount 1.1s cubic-bezier(.2,.9,.25,1.15) .25s both}
+  @keyframes mount{
+    0%{opacity:0;transform:translateY(-22px) rotate(-3deg)}
+    55%{opacity:1}
+    100%{opacity:1;transform:none}
+  }
+}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .wall{aspect-ratio:5/4;order:-1}
+  .plate-wrap{top:46%}
+}
+
+/* ---------- Sections ---------- */
+.section{padding-block:calc(var(--section) * .6)}
+.hero + .section{padding-top:0}
+.criteria-band,.contact{padding-block:var(--section)}
+.criteria-band{margin-block:calc(var(--section) * .4)}
+.contact{margin-top:calc(var(--section) * .4)}
+.section-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.5rem,4vw,4rem);align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.section-head h2{font-size:var(--step-3);max-width:16ch}
+.section-head p{color:var(--ink-2);max-width:52ch;margin:0}
+@media (max-width:760px){.section-head{grid-template-columns:1fr}}
+
+/* What we do: a three-column definition layout, not cards */
+.doing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink)}
+.doing > div{padding:1.6rem clamp(1rem,2.5vw,2rem) 0 0}
+.doing > div + div{padding-left:clamp(1rem,2.5vw,2rem);border-left:1px solid var(--rule)}
+.doing h3{font-size:var(--step-2);margin-bottom:.8rem}
+.doing p{color:var(--ink-2);max-width:36ch}
+@media (max-width:760px){
+  .doing{grid-template-columns:1fr}
+  .doing > div,.doing > div + div{padding:1.4rem 0;border-left:0;border-bottom:1px solid var(--rule)}
+}
+
+/* Criteria: a schedule, like a property particulars sheet */
+.criteria-band{background:var(--paper);border-block:1px solid var(--rule)}
+.criteria{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(2rem,5vw,5rem)}
+.criteria h2{font-size:var(--step-3);max-width:12ch;margin-bottom:1.2rem}
+.criteria-intro p{color:var(--ink-2);max-width:38ch}
+.schedule{margin:0;border-top:2px solid var(--ink)}
+.schedule > div{display:grid;grid-template-columns:minmax(8rem,1fr) minmax(0,2.6fr);gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.schedule dt{font-weight:700}
+.schedule dd{margin:0;color:var(--ink-2)}
+@media (max-width:760px){
+  .criteria{grid-template-columns:1fr}
+  .schedule > div{grid-template-columns:1fr;gap:.25rem}
+}
+
+/* Audiences */
+.paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem)}
+.path{display:flex;flex-direction:column;padding:clamp(1.4rem,2.5vw,2rem);border:1px solid var(--rule);border-radius:var(--radius-m);background:transparent;transition:border-color .15s,background .15s}
+.path:hover{border-color:var(--ink);background:var(--paper)}
+.path h3{font-size:var(--step-1);margin-bottom:.7rem}
+.path p{color:var(--ink-2);flex:1}
+.path a{font-weight:600;align-self:flex-start}
+.path.lead{background:var(--canal);border-color:var(--canal);color:var(--canal-ink)}
+.path.lead p{color:color-mix(in srgb,var(--canal-ink) 82%,transparent)}
+.path.lead:hover{background:var(--canal);border-color:var(--ink)}
+@media (max-width:860px){.paths{grid-template-columns:1fr}}
+
+/* Company record */
+.record{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+.record h2{font-size:var(--step-3);max-width:13ch;margin-bottom:1.2rem}
+.record-intro p{color:var(--ink-2);max-width:40ch}
+.register{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-m);overflow:hidden}
+.register-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid var(--rule)}
+.register-head strong{font-size:1.02rem;letter-spacing:-.01em}
+.status{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;font-weight:600;color:var(--canal)}
+.status::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:currentColor}
+.register dl{margin:0}
+.register dl > div{display:grid;grid-template-columns:minmax(9rem,1fr) minmax(0,1.8fr);gap:1rem;padding:.95rem 1.4rem;border-bottom:1px solid var(--rule)}
+.register dl > div:last-child{border-bottom:0}
+.register dt{color:var(--muted);font-size:.93rem}
+.register dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+.register dd span{display:block;color:var(--muted);font-weight:400;font-size:.9rem}
+.register-foot{padding:1rem 1.4rem;border-top:1px solid var(--rule);background:var(--stone-2);font-size:var(--step--1)}
+@media (max-width:760px){
+  .record{grid-template-columns:1fr}
+  .register dl > div{grid-template-columns:1fr;gap:.15rem}
+}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--stone)}
+:root[data-theme="dark"] .contact{background:#0F141A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .contact{background:#0F141A}}
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,5vw,5rem)}
+.contact h2{font-size:var(--step-3);max-width:12ch;margin-bottom:1.2rem;color:#F4F4F1}
+.contact-intro p{color:#B9BEC4;max-width:38ch}
+.contact address{font-style:normal;margin-top:2rem;padding-top:1.4rem;border-top:1px solid #36404C;color:#D9DCDF;line-height:1.7}
+.contact address strong{display:block;color:#fff;margin-bottom:.2rem}
+form{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 1.2rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field.full{grid-column:1/-1}
+label,legend{font-size:.93rem;font-weight:600;color:#E6E8EA}
+input,select,textarea{font:inherit;color:#fff;background:#232C37;border:1px solid #3D4855;border-radius:var(--radius-s);padding:.8rem .9rem;min-height:48px;width:100%;transition:border-color .15s,background .15s}
+textarea{min-height:140px;resize:vertical;line-height:1.5}
+input::placeholder,textarea::placeholder{color:#8B939C}
+input:hover,select:hover,textarea:hover{border-color:#5A6674}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#8CC7B4;background:#26313D;box-shadow:0 0 0 3px rgba(140,199,180,.25)}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C9CED3' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.6rem}
+fieldset{border:0;margin:0;padding:0;grid-column:1/-1}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;min-height:0}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:.55rem 1rem;border:1px solid #3D4855;border-radius:999px;font-size:.95rem;color:#D9DCDF;transition:all .15s;pointer-events:none}
+.chip input:hover + span{border-color:#6A7684}
+.chip input:checked + span{background:#8CC7B4;border-color:#8CC7B4;color:#0F1A16;font-weight:600}
+.chip input:focus-visible + span{outline:3px solid #8CC7B4;outline-offset:2px}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;margin-top:.4rem}
+.contact .btn-solid{background:#F4F4F1;color:#1C2430;border-color:#F4F4F1}
+.contact .btn-solid:hover{background:#8CC7B4;border-color:#8CC7B4;color:#0F1A16}
+.form-note{font-size:var(--step--1);color:#9AA2AB;margin:0;max-width:40ch}
+.form-msg{grid-column:1/-1;margin:0;font-size:.95rem;min-height:1.5em}
+.form-msg:empty{display:none}
+.form-msg.err{color:#FFB4A8}
+.form-msg.ok{color:#A8DCCB}
+.field-error{border-color:#FF8A78 !important}
+@media (max-width:760px){.contact-grid,form{grid-template-columns:1fr}}
+
+/* Footer */
+.site-foot{background:var(--ink);color:#9AA2AB;font-size:var(--step--1);padding:0 0 2.5rem}
+:root[data-theme="dark"] .site-foot{background:#0F141A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .site-foot{background:#0F141A}}
+.foot-in{border-top:1px solid #36404C;padding-top:2rem;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:2rem;align-items:end}
+.foot-in p{margin:0;max-width:70ch;line-height:1.65}
+.foot-in a{color:#D9DCDF}
+.foot-links{display:flex;gap:1.4rem;justify-content:flex-end;flex-wrap:wrap}
+@media (max-width:760px){.foot-in{grid-template-columns:1fr}.foot-links{justify-content:flex-start}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+@media print{
+  .site-head,.wall,.contact form,.theme-btn{display:none}
+  body,.contact,.site-foot{background:#fff;color:#000}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head" id="top">
+  <div class="wrap head-in">
+    <a class="brand" href="#top" aria-label="NW1 Investments Commercial, back to top">
+      <span class="brand-mark" aria-hidden="true">NW1</span>
+      <span>NW1 Investments<small>Commercial</small></span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#what-we-do">What we do</a>
+      <a href="#criteria">What we buy</a>
+      <a href="#company">Company</a>
+      <button class="theme-btn" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn btn-solid" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="hero-title">Commercial property in London, bought carefully and held for the long term.</h1>
+        <p class="hero-lede">We buy, let and manage commercial buildings across London. We deal directly with owners, agents and the businesses that occupy our space.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#contact" data-enquiry="Selling a property">Offer us a property</a>
+          <a class="btn btn-line" href="#contact" data-enquiry="Looking for space">Ask about space</a>
+        </div>
+        <p class="hero-note">A private company registered in England and Wales, number 15610361. Part of the <a href="#company">NW1 Investments group</a>.</p>
+      </div>
+
+      <div class="wall" role="img" aria-label="A white London street nameplate reading NW1 Investments Commercial, fixed to a yellow stock-brick wall">
+        <svg class="bricks" id="bricks" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+        <div class="plate-wrap" aria-hidden="true">
+          <div class="plate">
+            <i class="screw tl"></i><i class="screw tr"></i><i class="screw bl"></i><i class="screw br"></i>
+            <span class="plate-top">Commercial</span>
+            <span class="plate-main"><span class="street">INVESTMENTS</span><span class="district">NW1</span></span>
+            <div class="plate-rule"></div>
+            <span class="plate-sub">Buying, letting and managing</span>
+          </div>
+        </div>
+        <div class="wall-caption" aria-hidden="true"><span>London</span><span>Est. 2024</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we do -->
+  <section class="section" id="what-we-do" aria-labelledby="wwd-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="wwd-title">We own the buildings we run.</h2>
+        <p>We're an owner-operator, not a fund or an agency. That means the people who agree a purchase or a lease are the same people who look after the building afterwards.</p>
+      </div>
+      <div class="doing">
+        <div>
+          <h3>Buy</h3>
+          <p>We acquire freehold and long-leasehold commercial property, from single shops to mixed-use blocks. If a building isn't right for us, we'll say so early.</p>
+        </div>
+        <div>
+          <h3>Let</h3>
+          <p>We let space to businesses on clear terms. We'd rather keep a good tenant for years than chase the last pound of rent.</p>
+        </div>
+        <div>
+          <h3>Manage</h3>
+          <p>Repairs, compliance and service charges are handled directly, by people you can reach, so small problems stay small.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Criteria -->
+  <section class="section criteria-band" id="criteria" aria-labelledby="crit-title">
+    <div class="wrap criteria">
+      <div class="criteria-intro">
+        <h2 id="crit-title">What we look for</h2>
+        <p>If your building fits most of this, we'd like to hear about it. If it only fits some, tell us anyway; we look at every property on its merits.</p>
+        <a class="btn btn-line" href="#contact" data-enquiry="Selling a property">Send us details</a>
+      </div>
+      <dl class="schedule">
+        <div><dt>Location</dt><dd>London, with a focus on the north and north-west of the city.</dd></div>
+        <div><dt>Property type</dt><dd>Shops and parades, offices, light industrial units, and mixed-use buildings with commercial space at street level.</dd></div>
+        <div><dt>Tenure</dt><dd>Freehold preferred. Long leasehold considered.</dd></div>
+        <div><dt>Occupancy</dt><dd>Fully let, part let or vacant.</dd></div>
+        <div><dt>Condition</dt><dd>Anything from well kept to in need of work. We're comfortable taking on refurbishment.</dd></div>
+        <div><dt>How we deal</dt><dd>Directly with owners, or through their agents and advisers. We keep every conversation confidential.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Paths -->
+  <section class="section" aria-labelledby="paths-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="paths-title">Who we work with</h2>
+        <p>Most of our conversations start in one of three ways. Pick the one that fits and we'll route your message to the right person.</p>
+      </div>
+      <div class="paths">
+        <article class="path lead">
+          <h3>Owners thinking of selling</h3>
+          <p>Tell us about the building, its tenants and your timing. We'll give you a straight answer on whether we're interested.</p>
+          <a href="#contact" data-enquiry="Selling a property">Offer a property</a>
+        </article>
+        <article class="path">
+          <h3>Agents and advisers</h3>
+          <p>Send us instructions that match our criteria, on or off market. We respond to every submission.</p>
+          <a href="#contact" data-enquiry="Agent or adviser">Send an instruction</a>
+        </article>
+        <article class="path">
+          <h3>Businesses looking for space</h3>
+          <p>Tell us what you need, where and when. If we have something suitable, or expect to, we'll be in touch.</p>
+          <a href="#contact" data-enquiry="Looking for space">Ask about space</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company record -->
+  <section class="section" id="company" aria-labelledby="co-title">
+    <div class="wrap record">
+      <div class="record-intro">
+        <h2 id="co-title">The company on record</h2>
+        <p>NW1 Investments Commercial Limited is the commercial property company within the NW1 Investments group, and is wholly owned by NW1 Investments Ltd.</p>
+        <p>Our filings are public. You can check any of these details on the Companies House register.</p>
+      </div>
+      <div class="register">
+        <div class="register-head">
+          <strong>NW1 Investments Commercial Limited</strong>
+          <span class="status">Registered</span>
+        </div>
+        <dl>
+          <div><dt>Company number</dt><dd>15610361</dd></div>
+          <div><dt>Incorporated</dt><dd>2 April 2024<span>Under the Companies Act 2006</span></dd></div>
+          <div><dt>Company type</dt><dd>Private company limited by shares</dd></div>
+          <div><dt>Registered office</dt><dd>102 Princes Park Avenue<br>London NW11 0JX</dd></div>
+          <div><dt>Nature of business</dt><dd>Letting and operating of own or leased real estate<span>SIC code 68209</span></dd></div>
+          <div><dt>Parent company</dt><dd>NW1 Investments Ltd<span>Company number 15455954</span></dd></div>
+          <div><dt>Directors</dt><dd>Menachem Mendel Friedman<br>David Schocken Landau</dd></div>
+        </dl>
+        <div class="register-foot">
+          <a href="https://find-and-update.company-information.service.gov.uk/company/15610361" target="_blank" rel="noopener">View on Companies House<span class="sr"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div class="contact-intro">
+        <h2 id="contact-title">Get in touch</h2>
+        <p>Tell us a little about what you have in mind. A postcode and a few lines is plenty to start.</p>
+        <address>
+          <strong>NW1 Investments Commercial Limited</strong>
+          102 Princes Park Avenue<br>
+          London NW11 0JX<br>
+          United Kingdom
+        </address>
+      </div>
+
+      <form id="enquiry" novalidate>
+        <fieldset>
+          <legend>I'm getting in touch about</legend>
+          <div class="chips" role="radiogroup">
+            <label class="chip"><input type="radio" name="topic" value="Selling a property" checked><span>Selling a property</span></label>
+            <label class="chip"><input type="radio" name="topic" value="Agent or adviser"><span>I'm an agent or adviser</span></label>
+            <label class="chip"><input type="radio" name="topic" value="Looking for space"><span>Looking for space</span></label>
+            <label class="chip"><input type="radio" name="topic" value="Something else"><span>Something else</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone <span style="font-weight:400;color:#9AA2AB">(optional)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-postcode">Property postcode <span style="font-weight:400;color:#9AA2AB">(if relevant)</span></label>
+          <input id="f-postcode" name="postcode" type="text" autocomplete="off" placeholder="e.g. NW1 7AA" autocapitalize="characters">
+        </div>
+        <div class="field full">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" required placeholder="The building, the space you need, or your question"></textarea>
+        </div>
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        <div class="form-foot">
+          <button class="btn btn-solid" type="submit">Send enquiry</button>
+          <p class="form-note">This opens your email app with your message ready to send. We only use your details to reply to you.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-in">
+    <p>NW1 Investments Commercial Limited is a private company limited by shares, registered in England and Wales under company number 15610361. Registered office: 102 Princes Park Avenue, London NW11 0JX. &copy; <span id="year">2024</span> NW1 Investments Commercial Limited.</p>
+    <div class="foot-links">
+      <a href="#company">Company details</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ======================================================
+   SETTINGS: put the inbox that should receive enquiries here.
+   ====================================================== */
+const ENQUIRY_EMAIL = "enquiries@your-domain.co.uk";
+
+(function(){
+  "use strict";
+
+  /* Year */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* London stock-brick wall (deterministic, so it looks the same on every visit) */
+  const svg = document.getElementById("bricks");
+  if (svg){
+    const NS = "http://www.w3.org/2000/svg";
+    const W = 440, H = 480, bw = 44, bh = 14, m = 2.2;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    let seed = 1902;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const tones = ["#C9A96E","#BE9B5E","#D2B47C","#B38E55","#C4A267","#A98A5B","#D8BE8A","#9C8466","#B89A68","#8F7250"];
+    const mortar = document.createElementNS(NS,"rect");
+    mortar.setAttribute("width",W); mortar.setAttribute("height",H); mortar.setAttribute("fill","#D5CDBB");
+    svg.appendChild(mortar);
+    const frag = document.createDocumentFragment();
+    for (let r = 0, y = 0; y < H; r++, y += bh){
+      const off = (r % 2) ? -bw/2 : 0;
+      for (let x = off; x < W; x += bw){
+        const b = document.createElementNS(NS,"rect");
+        const jitter = (rnd() - .5) * 1.2;
+        b.setAttribute("x", (x + m/2).toFixed(1));
+        b.setAttribute("y", (y + m/2 + jitter*.3).toFixed(1));
+        b.setAttribute("width", (bw - m).toFixed(1));
+        b.setAttribute("height", (bh - m).toFixed(1));
+        b.setAttribute("rx", "1.2");
+        let t = tones[Math.floor(rnd() * tones.length)];
+        if (rnd() < .06) t = "#7A5B40";   /* occasional over-fired brick */
+        b.setAttribute("fill", t);
+        b.setAttribute("opacity", (0.86 + rnd() * .14).toFixed(2));
+        frag.appendChild(b);
+      }
+    }
+    svg.appendChild(frag);
+    /* soft soot/weathering */
+    const defs = document.createElementNS(NS,"defs");
+    defs.innerHTML = '<linearGradient id="soot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2c1c" stop-opacity=".18"/><stop offset=".35" stop-color="#3a2c1c" stop-opacity="0"/><stop offset="1" stop-color="#2a2016" stop-opacity=".22"/></linearGradient>';
+    svg.appendChild(defs);
+    const soot = document.createElementNS(NS,"rect");
+    soot.setAttribute("width",W); soot.setAttribute("height",H); soot.setAttribute("fill","url(#soot)");
+    svg.appendChild(soot);
+  }
+
+  /* Header border on scroll */
+  const head = document.querySelector(".site-head");
+  const onScroll = () => head.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* Mobile menu */
+  const menuBtn = document.querySelector(".menu-btn");
+  const nav = document.getElementById("nav");
+  const closeMenu = () => { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); menuBtn.textContent = "Menu"; };
+  menuBtn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.textContent = open ? "Close" : "Menu";
+  });
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { closeMenu(); menuBtn.focus(); }});
+
+  /* Theme toggle (remembered per visitor) */
+  const root = document.documentElement;
+  try { const saved = localStorage.getItem("nw1-theme"); if (saved) root.dataset.theme = saved; } catch(e){}
+  document.querySelector(".theme-btn").addEventListener("click", () => {
+    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const current = root.dataset.theme || (sysDark ? "dark" : "light");
+    const next = current === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("nw1-theme", next); } catch(e){}
+  });
+
+  /* Links that preselect the enquiry type */
+  document.querySelectorAll("[data-enquiry]").forEach(link => {
+    link.addEventListener("click", () => {
+      const r = document.querySelector(`input[name="topic"][value="${link.dataset.enquiry}"]`);
+      if (r) r.checked = true;
+      setTimeout(() => document.getElementById("f-name").focus({preventScroll:true}), 450);
+    });
+  });
+
+  /* Enquiry form: validates, then opens the visitor's email app */
+  const form = document.getElementById("enquiry");
+  const msg = document.getElementById("form-msg");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    form.querySelectorAll(".field-error").forEach(el => el.classList.remove("field-error"));
+    const f = new FormData(form);
+    const name = (f.get("name")||"").trim();
+    const email = (f.get("email")||"").trim();
+    const message = (f.get("message")||"").trim();
+    const missing = [];
+    if (!name) missing.push(["f-name","your name"]);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push(["f-email","a valid email address"]);
+    if (!message) missing.push(["f-message","a message"]);
+    if (missing.length){
+      missing.forEach(([id]) => document.getElementById(id).classList.add("field-error"));
+      msg.className = "form-msg err";
+      msg.textContent = "Add " + missing.map(m => m[1]).join(", ").replace(/, ([^,]*)$/, " and $1") + " to send your enquiry.";
+      document.getElementById(missing[0][0]).focus();
+      return;
+    }
+    const topic = f.get("topic");
+    const lines = [
+      message, "",
+      "---",
+      "Name: " + name,
+      "Email: " + email,
+      f.get("phone") ? "Phone: " + f.get("phone") : null,
+      f.get("postcode") ? "Property postcode: " + String(f.get("postcode")).toUpperCase() : null,
+      "Enquiry type: " + topic
+    ].filter(l => l !== null);
+    const subject = `${topic}: enquiry from ${name}`;
+    window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    msg.className = "form-msg ok";
+    msg.textContent = "Your email app should now be open with the message ready. Press send there to reach us.";
+  });
+})();
+</script>
+</body>
+</html>
